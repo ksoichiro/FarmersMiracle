@@ -65,9 +65,7 @@ loom {
 }
 
 processResources {
-    from(project(commonModule).sourceSets.main.resources) {
-        exclude 'farmersmiracle.mixins.json'
-    }
+    from(project(commonModule).sourceSets.main.resources)
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 
     inputs.property 'version', project.version
@@ -80,7 +78,6 @@ processResources {
 shadowJar {
     configurations = [project.configurations.shadowBundle]
     archiveClassifier = 'dev-shadow'
-    exclude 'farmersmiracle.mixins.json'
 }
 
 remapJar {

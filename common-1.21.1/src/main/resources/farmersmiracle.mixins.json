@@ -8,6 +8,7 @@
     "StemBlockMixin",
     "StructureStartMixin"
   ],
+  "refmap": "common-common-refmap.json",
   "injectors": {
     "defaultRequire": 1
   }
