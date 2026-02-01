@@ -4,6 +4,8 @@ A Minecraft mod that adds three temple structures with collectible orbs. Gatheri
 
 > Collect three sacred orbs from small shrines to slightly boost crop growth around you.
 
+![Farmer's Miracle Overview](docs/screenshots/featured-for-readme.png)
+
 ## Features
 
 - **3 Temple Structures** — Temple of Golden Wheat, Temple of Pumpkins, Temple of Melons
