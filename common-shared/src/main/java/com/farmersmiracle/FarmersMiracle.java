@@ -17,6 +17,7 @@
  */
 package com.farmersmiracle;
 
+import com.farmersmiracle.events.FarmersMiracleEvents;
 import com.farmersmiracle.registry.ModCreativeTabs;
 import com.farmersmiracle.registry.ModItems;
 import org.slf4j.Logger;
@@ -29,6 +30,8 @@ public class FarmersMiracle {
     public static void init() {
         ModItems.register();
         ModCreativeTabs.register();
+
+        FarmersMiracleEvents.register();
 
         LOGGER.info("Farmer's Miracle initialized");
     }

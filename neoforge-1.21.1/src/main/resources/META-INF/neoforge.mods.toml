@@ -13,6 +13,9 @@ Collect three sacred orbs from small shrines to slightly boost crop growth aroun
 authors="ksoichiro"
 displayURL="https://github.com/ksoichiro/FarmersMiracle"
 
+[[mixins]]
+config="farmersmiracle.mixins.json"
+
 [[dependencies.farmersmiracle]]
 modId="neoforge"
 type="required"
