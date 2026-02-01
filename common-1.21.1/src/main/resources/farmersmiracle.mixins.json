@@ -5,7 +5,8 @@
   "compatibilityLevel": "JAVA_21",
   "mixins": [
     "CropBlockMixin",
-    "StemBlockMixin"
+    "StemBlockMixin",
+    "StructureStartMixin"
   ],
   "injectors": {
     "defaultRequire": 1
