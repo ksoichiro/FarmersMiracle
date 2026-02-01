@@ -19,6 +19,7 @@ package com.farmersmiracle.mixin;
 
 import com.farmersmiracle.effects.GrainGrowthHandler;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.block.Block;
@@ -52,6 +53,9 @@ public abstract class CropBlockMixin extends Block {
             } finally {
                 farmersmiracle$inBonusTick = false;
             }
+            level.sendParticles(ParticleTypes.HAPPY_VILLAGER,
+                    pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5,
+                    5, 0.3, 0.3, 0.3, 0.0);
         }
     }
 }

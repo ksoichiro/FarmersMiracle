@@ -27,7 +27,14 @@ import net.minecraft.world.level.Level;
  * Called from Mixin on CropBlock/StemBlock randomTick.
  */
 public class GrainGrowthHandler {
-    private static final double BASE_GROWTH_RATE = 0.03;
+    // Non-linear scaling: level 3 (all grains) gives a very noticeable boost
+    private static final double[] GROWTH_RATES = {0.0, 0.10, 0.20, 0.70};
+
+    private static double getGrowthRate(int level) {
+        if (level <= 0) return 0.0;
+        if (level >= GROWTH_RATES.length) return GROWTH_RATES[GROWTH_RATES.length - 1];
+        return GROWTH_RATES[level];
+    }
 
     /**
      * Determines whether an additional growth tick should be applied.
@@ -40,7 +47,7 @@ public class GrainGrowthHandler {
     public static boolean shouldApplyBonusGrowth(ResourceKey<Level> dimension, BlockPos pos, RandomSource random) {
         for (BuffedPlayerCache.BuffedPlayerEntry entry : BuffedPlayerCache.getCachedPlayers()) {
             if (entry.isInRange(dimension, pos)) {
-                double chance = entry.growthLevel() * BASE_GROWTH_RATE;
+                double chance = getGrowthRate(entry.growthLevel());
                 if (random.nextDouble() < chance) {
                     return true;
                 }
