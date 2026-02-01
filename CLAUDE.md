@@ -4,19 +4,23 @@
 
 - Mod ID: `farmersmiracle`
 - Package: `com.farmersmiracle`
-- Architectury-based Minecraft mod (Fabric + NeoForge), targeting MC 1.21.1
+- Architectury-based Minecraft mod targeting MC 1.20.1 (Fabric + Forge) and MC 1.21.1 (Fabric + NeoForge)
 - Gradle multi-project setup
 
 ## Module Structure
 
 | Module | Role |
 |---|---|
-| `common-shared` | Mod main class, registry, event handlers, buff logic, player data. Not a Gradle subproject; included as srcDir from version-specific modules |
-| `common-1.21.1` | Resources (advancements, loot tables, tags, structure NBTs, worldgen JSONs, translations, item models), Mixin classes |
+| `common-shared` | Mod main class, registry, buff logic. Not a Gradle subproject; included as srcDir from version-specific modules |
+| `common-1.20.1` | Version-specific code (events, data, mixins) and resources for MC 1.20.1. NBT structures are generated at build time from 1.21.1 sources via `convertNbt` task |
+| `common-1.21.1` | Version-specific code (events, data, mixins) and resources for MC 1.21.1 |
 | `fabric-base` | Fabric-specific code (currently empty) |
-| `fabric-1.21.1` | Fabric entrypoint (`FarmersMiracleFabric`), `fabric.mod.json` |
+| `fabric-1.20.1` | Fabric entrypoint for MC 1.20.1 |
+| `fabric-1.21.1` | Fabric entrypoint for MC 1.21.1 |
+| `forge-base` | Forge-specific code (currently empty) |
+| `forge-1.20.1` | Forge entrypoint for MC 1.20.1 |
 | `neoforge-base` | NeoForge-specific code (currently empty) |
-| `neoforge-1.21.1` | NeoForge entrypoint (`FarmersMiracleNeoForge`), `neoforge.mods.toml` |
+| `neoforge-1.21.1` | NeoForge entrypoint for MC 1.21.1 |
 
 ## Key Implementation Details
 
@@ -45,10 +49,15 @@ The Fabric implementation of `ParticleProviderRegistry` (Architectury 13.0.8) ha
 ## Build & Test
 
 ```sh
+# Build for default version (1.21.1)
 ./gradlew build
+
+# Build for a specific version
+./gradlew build -Ptarget_mc_version=1.20.1
+./gradlew build -Ptarget_mc_version=1.21.1
 ```
 
-- Build is limited to MC 1.21.1 only
+- MC 1.20.1 build requires Python 3 with `nbtlib` package (for NBT structure conversion)
 - In-game verification is required for structure generation, advancement triggers, and buff behavior
 
 ## Reference Projects

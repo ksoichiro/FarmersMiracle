@@ -1,0 +1,30 @@
+{
+  "parent": "farmersmiracle:root",
+  "criteria": {
+    "has_melon_orb": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": ["farmersmiracle:melon_orb"]
+          }
+        ]
+      }
+    }
+  },
+  "display": {
+    "icon": {
+      "item": "farmersmiracle:melon_orb"
+    },
+    "title": {
+      "translate": "advancements.farmersmiracle.a_juicy_reward.title"
+    },
+    "description": {
+      "translate": "advancements.farmersmiracle.a_juicy_reward.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  }
+}

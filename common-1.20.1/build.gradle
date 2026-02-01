@@ -1,0 +1,79 @@
+architectury {
+    common rootProject.ext.enabled_platforms.split(',')
+}
+
+loom {
+    accessWidenerPath = file("src/main/resources/farmersmiracle.accesswidener")
+
+    mixin {
+        defaultRefmapName = "common-common-refmap.json"
+    }
+}
+
+sourceSets {
+    main {
+        java {
+            srcDir 'src/main/java'
+            srcDir '../common-shared/src/main/java'
+        }
+    }
+}
+
+dependencies {
+    // We depend on Fabric Loader here to use the Fabric @Environment annotations,
+    // which get remapped to the correct annotations on each platform.
+    // Do NOT use other classes from Fabric Loader.
+    modImplementation "net.fabricmc:fabric-loader:$rootProject.fabric_loader_version"
+
+    // Architectury API
+    modImplementation "dev.architectury:architectury:$rootProject.architectury_api_version"
+}
+
+// Convert 1.21.1 NBT structure files to 1.20.1 format during build.
+// Output goes to build/generated/nbt so the source of truth remains the 1.21.1 files.
+def nbtInputDir  = rootProject.file('common-1.21.1/src/main/resources/data/farmersmiracle/structure')
+def nbtOutputDir = layout.buildDirectory.dir('generated/nbt/data/farmersmiracle/structures')
+
+tasks.register('convertNbt', Exec) {
+    group = 'build'
+    description = 'Convert NBT structure files from 1.21.1 to 1.20.1 format'
+
+    inputs.dir(nbtInputDir)
+    outputs.dir(nbtOutputDir)
+
+    doFirst {
+        nbtOutputDir.get().asFile.mkdirs()
+    }
+
+    commandLine 'python3',
+            rootProject.file('scripts/convert_nbt_1_21_to_1_20.py'),
+            '--batch', '--data-version', '3465',
+            nbtInputDir.absolutePath,
+            nbtOutputDir.get().asFile.absolutePath
+}
+
+// Include generated NBT files as additional resources
+sourceSets {
+    main {
+        resources {
+            srcDir layout.buildDirectory.dir('generated/nbt')
+        }
+    }
+}
+
+// Expand pack_format variable in pack.mcmeta
+processResources {
+    dependsOn 'convertNbt'
+
+    inputs.property 'pack_format', project.ext.pack_format
+
+    filesMatching('pack.mcmeta') {
+        expand 'pack_format': project.ext.pack_format
+    }
+}
+
+// Set duplicates strategy for sourcesJar to avoid conflicts
+tasks.named('sourcesJar') {
+    dependsOn 'convertNbt'
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
