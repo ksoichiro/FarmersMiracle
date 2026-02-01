@@ -6,7 +6,7 @@
   },
   "display": {
     "icon": {
-      "id": "farmersmiracle:wheat_orb"
+      "id": "farmersmiracle:root_icon"
     },
     "title": {
       "translate": "advancements.farmersmiracle.root.title"

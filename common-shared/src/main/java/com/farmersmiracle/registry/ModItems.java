@@ -38,6 +38,13 @@ public class ModItems {
     public static final RegistrySupplier<Item> MELON_ORB = ITEMS.register("melon_orb",
             () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(1)));
 
+    // Icon-only items for advancement display
+    public static final RegistrySupplier<Item> ROOT_ICON = ITEMS.register("root_icon",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistrySupplier<Item> PILGRIMAGE_ICON = ITEMS.register("pilgrimage_icon",
+            () -> new Item(new Item.Properties()));
+
     public static void register() {
         ITEMS.register();
         FarmersMiracle.LOGGER.debug("Registered ModItems");

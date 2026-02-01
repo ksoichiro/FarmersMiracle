@@ -45,7 +45,7 @@
   ],
   "display": {
     "icon": {
-      "id": "farmersmiracle:wheat_orb"
+      "id": "farmersmiracle:pilgrimage_icon"
     },
     "title": {
       "translate": "advancements.farmersmiracle.pilgrimage_of_grains.title"
