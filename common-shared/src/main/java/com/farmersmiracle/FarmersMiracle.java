@@ -17,6 +17,8 @@
  */
 package com.farmersmiracle;
 
+import com.farmersmiracle.registry.ModCreativeTabs;
+import com.farmersmiracle.registry.ModItems;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -25,6 +27,9 @@ public class FarmersMiracle {
     public static final Logger LOGGER = LoggerFactory.getLogger(FarmersMiracle.class);
 
     public static void init() {
+        ModItems.register();
+        ModCreativeTabs.register();
+
         LOGGER.info("Farmer's Miracle initialized");
     }
 }
