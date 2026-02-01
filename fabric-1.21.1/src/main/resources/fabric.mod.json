@@ -17,6 +17,9 @@
   "entrypoints": {
     "main": [
       "com.farmersmiracle.fabric.FarmersMiracleFabric"
+    ],
+    "client": [
+      "com.farmersmiracle.fabric.FarmersMiracleFabricClient"
     ]
   },
   "mixins": [

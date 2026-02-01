@@ -15,28 +15,17 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with Farmer's Miracle. If not, see <https://www.gnu.org/licenses/>.
  */
-package com.farmersmiracle;
+package com.farmersmiracle.fabric;
 
-import com.farmersmiracle.events.FarmersMiracleEvents;
-import com.farmersmiracle.registry.ModCreativeTabs;
-import com.farmersmiracle.registry.ModEffects;
-import com.farmersmiracle.registry.ModItems;
+import com.farmersmiracle.client.particle.GrainGrowthParticle;
 import com.farmersmiracle.registry.ModParticles;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import net.fabricmc.api.ClientModInitializer;
+import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 
-public class FarmersMiracle {
-    public static final String MOD_ID = "farmersmiracle";
-    public static final Logger LOGGER = LoggerFactory.getLogger(FarmersMiracle.class);
-
-    public static void init() {
-        ModItems.register();
-        ModEffects.register();
-        ModParticles.register();
-        ModCreativeTabs.register();
-
-        FarmersMiracleEvents.register();
-
-        LOGGER.info("Farmer's Miracle initialized");
+public class FarmersMiracleFabricClient implements ClientModInitializer {
+    @Override
+    public void onInitializeClient() {
+        ParticleFactoryRegistry.getInstance().register(
+                ModParticles.GRAIN_GROWTH.get(), GrainGrowthParticle.Provider::new);
     }
 }

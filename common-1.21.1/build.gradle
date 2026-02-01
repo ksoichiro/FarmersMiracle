@@ -3,6 +3,8 @@ architectury {
 }
 
 loom {
+    accessWidenerPath = file("src/main/resources/farmersmiracle.accesswidener")
+
     mixin {
         defaultRefmapName = "common-common-refmap.json"
     }
