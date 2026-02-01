@@ -48,7 +48,8 @@ public class FarmersMiracleEvents {
 
     private static void onAdvancement(ServerPlayer player, AdvancementHolder advancementHolder) {
         ResourceLocation id = advancementHolder.id();
-        PlayerBuffData data = PlayerBuffData.get(player.serverLevel());
+        // Always use overworld for SavedData to avoid per-dimension fragmentation
+        PlayerBuffData data = PlayerBuffData.get(player.server.overworld());
 
         if (id.equals(ADV_THE_FIRST_HARVEST)
                 || id.equals(ADV_FRUIT_OF_THE_EARTH)
