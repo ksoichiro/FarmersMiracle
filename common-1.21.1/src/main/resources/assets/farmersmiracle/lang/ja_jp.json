@@ -12,5 +12,7 @@
   "advancements.farmersmiracle.a_juicy_reward.title": "瑞々しき報酬",
   "advancements.farmersmiracle.a_juicy_reward.description": "スイカの神殿からスイカのオーブを手に入れる",
   "advancements.farmersmiracle.pilgrimage_of_grains.title": "穀物三神殿の巡礼",
-  "advancements.farmersmiracle.pilgrimage_of_grains.description": "3つの聖なるオーブをすべて集める"
+  "advancements.farmersmiracle.pilgrimage_of_grains.description": "3つの聖なるオーブをすべて集める",
+  "effect.farmersmiracle.grain_growth": "穀物の加護：成長",
+  "effect.farmersmiracle.grain_spread": "穀物の加護：波及"
 }

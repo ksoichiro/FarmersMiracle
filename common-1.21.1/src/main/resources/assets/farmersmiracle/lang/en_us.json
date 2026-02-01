@@ -12,5 +12,7 @@
   "advancements.farmersmiracle.a_juicy_reward.title": "A Juicy Reward",
   "advancements.farmersmiracle.a_juicy_reward.description": "Obtain the Melon Orb from the Temple of Melons",
   "advancements.farmersmiracle.pilgrimage_of_grains.title": "Pilgrimage of the Three Grain Temples",
-  "advancements.farmersmiracle.pilgrimage_of_grains.description": "Collect all three sacred orbs"
+  "advancements.farmersmiracle.pilgrimage_of_grains.description": "Collect all three sacred orbs",
+  "effect.farmersmiracle.grain_growth": "Blessing of Grains: Growth",
+  "effect.farmersmiracle.grain_spread": "Blessing of Grains: Spread"
 }

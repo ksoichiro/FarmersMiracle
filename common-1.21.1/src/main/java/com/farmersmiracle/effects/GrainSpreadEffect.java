@@ -15,26 +15,17 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with Farmer's Miracle. If not, see <https://www.gnu.org/licenses/>.
  */
-package com.farmersmiracle;
+package com.farmersmiracle.effects;
 
-import com.farmersmiracle.events.FarmersMiracleEvents;
-import com.farmersmiracle.registry.ModCreativeTabs;
-import com.farmersmiracle.registry.ModEffects;
-import com.farmersmiracle.registry.ModItems;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffectCategory;
 
-public class FarmersMiracle {
-    public static final String MOD_ID = "farmersmiracle";
-    public static final Logger LOGGER = LoggerFactory.getLogger(FarmersMiracle.class);
-
-    public static void init() {
-        ModItems.register();
-        ModEffects.register();
-        ModCreativeTabs.register();
-
-        FarmersMiracleEvents.register();
-
-        LOGGER.info("Farmer's Miracle initialized");
+/**
+ * Blessing of Grains: Spread effect.
+ * Display-only; range expansion is handled by BuffedPlayerCache/GrainGrowthHandler.
+ */
+public class GrainSpreadEffect extends MobEffect {
+    public GrainSpreadEffect() {
+        super(MobEffectCategory.BENEFICIAL, 0x32CD32); // Lime green
     }
 }
