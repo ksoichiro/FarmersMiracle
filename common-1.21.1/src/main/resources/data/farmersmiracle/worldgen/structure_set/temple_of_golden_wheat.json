@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "farmersmiracle:temple_of_golden_wheat",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 748291653,
+    "spacing": 24,
+    "separation": 19
+  }
+}
