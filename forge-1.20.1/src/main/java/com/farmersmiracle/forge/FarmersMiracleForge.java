@@ -18,11 +18,14 @@
 package com.farmersmiracle.forge;
 
 import com.farmersmiracle.FarmersMiracle;
+import dev.architectury.platform.forge.EventBuses;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 @Mod(FarmersMiracle.MOD_ID)
 public class FarmersMiracleForge {
     public FarmersMiracleForge() {
+        EventBuses.registerModEventBus(FarmersMiracle.MOD_ID, FMLJavaModLoadingContext.get().getModEventBus());
         FarmersMiracle.init();
     }
 }
