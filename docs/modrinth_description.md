@@ -70,7 +70,7 @@ This mod is built with **Architectury** and supports **multiple mod loaders and 
 
 #### Minecraft 1.20.1
 - **Mod Loader**:
-  - Fabric Loader 0.15.11+ with Fabric API 0.92.2+1.20.1, OR
+  - Fabric Loader 0.16.10+ with Fabric API 0.92.2+1.20.1, OR
   - Forge 47.3.0+
 - **Dependencies**:
   - Architectury API 9.2.14+
