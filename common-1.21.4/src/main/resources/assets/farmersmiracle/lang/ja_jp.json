@@ -1,0 +1,18 @@
+{
+  "itemGroup.farmersmiracle.farmersmiracle": "ファーマーズミラクル",
+  "item.farmersmiracle.wheat_orb": "小麦のオーブ",
+  "item.farmersmiracle.pumpkin_orb": "カボチャのオーブ",
+  "item.farmersmiracle.melon_orb": "スイカのオーブ",
+  "advancements.farmersmiracle.root.title": "ファーマーズミラクル",
+  "advancements.farmersmiracle.root.description": "小さな神殿から聖なるオーブを集めよう",
+  "advancements.farmersmiracle.the_first_harvest.title": "実りの始まり",
+  "advancements.farmersmiracle.the_first_harvest.description": "黄金麦の神殿から小麦のオーブを手に入れる",
+  "advancements.farmersmiracle.fruit_of_the_earth.title": "大地の膨らみ",
+  "advancements.farmersmiracle.fruit_of_the_earth.description": "カボチャの神殿からカボチャのオーブを手に入れる",
+  "advancements.farmersmiracle.a_juicy_reward.title": "瑞々しき報酬",
+  "advancements.farmersmiracle.a_juicy_reward.description": "スイカの神殿からスイカのオーブを手に入れる",
+  "advancements.farmersmiracle.pilgrimage_of_grains.title": "穀物三神殿の巡礼",
+  "advancements.farmersmiracle.pilgrimage_of_grains.description": "3つの聖なるオーブをすべて集める",
+  "effect.farmersmiracle.grain_growth": "穀物の加護：成長",
+  "effect.farmersmiracle.grain_spread": "穀物の加護：波及"
+}

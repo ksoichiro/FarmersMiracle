@@ -4,7 +4,7 @@
 
 - Mod ID: `farmersmiracle`
 - Package: `com.farmersmiracle`
-- Architectury-based Minecraft mod targeting MC 1.20.1 (Fabric + Forge), MC 1.21.1 (Fabric + NeoForge), and MC 1.21.3 (Fabric + NeoForge)
+- Architectury-based Minecraft mod targeting MC 1.20.1 (Fabric + Forge), MC 1.21.1 (Fabric + NeoForge), MC 1.21.3 (Fabric + NeoForge), and MC 1.21.4 (Fabric + NeoForge)
 - Gradle multi-project setup
 
 ## Module Structure
@@ -15,15 +15,18 @@
 | `common-1.20.1` | Version-specific code (events, data, mixins) and resources for MC 1.20.1. NBT structures are generated at build time from 1.21.1 sources via `convertNbt` task |
 | `common-1.21.1` | Version-specific code (events, data, mixins) and resources for MC 1.21.1 |
 | `common-1.21.3` | Version-specific code (events, data, mixins) and resources for MC 1.21.3. `registryOrThrow` → `lookupOrThrow` API change |
+| `common-1.21.4` | Version-specific code (events, data, mixins) and resources for MC 1.21.4. Adds `assets/<namespace>/items/` item model definitions |
 | `fabric-base` | Fabric-specific code (currently empty) |
 | `fabric-1.20.1` | Fabric entrypoint for MC 1.20.1 |
 | `fabric-1.21.1` | Fabric entrypoint for MC 1.21.1 |
 | `fabric-1.21.3` | Fabric entrypoint for MC 1.21.3 |
+| `fabric-1.21.4` | Fabric entrypoint for MC 1.21.4 |
 | `forge-base` | Forge-specific code (currently empty) |
 | `forge-1.20.1` | Forge entrypoint for MC 1.20.1 |
 | `neoforge-base` | NeoForge-specific code (currently empty) |
 | `neoforge-1.21.1` | NeoForge entrypoint for MC 1.21.1 |
 | `neoforge-1.21.3` | NeoForge entrypoint for MC 1.21.3 |
+| `neoforge-1.21.4` | NeoForge entrypoint for MC 1.21.4 |
 
 ## Key Implementation Details
 
@@ -51,6 +54,12 @@
 - Mixin JSON must not include `refmap` field — it causes NeoForge to use intermediary names instead of Mojang mappings, resulting in mixin apply failures
 - `neoforge-1.21.3/gradle.properties` must contain `loom.platform=neoforge` for Architectury Loom to create the `neoForge` dependency configuration
 
+## MC 1.21.4 Notes
+
+- Java code is identical to 1.21.3 (`setId()`, `lookupOrThrow()` unchanged)
+- `assets/<namespace>/items/<id>.json` item model definitions are required (new in 1.21.4). These reference existing `models/item/` models
+- Mixin `refmap` omission and `loom.platform=neoforge` settings carry over from 1.21.3
+
 ## Architectury API
 
 The Fabric implementation of `ParticleProviderRegistry` (Architectury 13.0.8) has `register(ParticleType, DeferredParticleProvider)` as a no-op. Use each platform's API directly for particle provider registration:
@@ -60,13 +69,14 @@ The Fabric implementation of `ParticleProviderRegistry` (Architectury 13.0.8) ha
 ## Build & Test
 
 ```sh
-# Build for default version (1.21.3)
+# Build for default version (1.21.4)
 ./gradlew build
 
 # Build for a specific version
 ./gradlew build -Ptarget_mc_version=1.20.1
 ./gradlew build -Ptarget_mc_version=1.21.1
 ./gradlew build -Ptarget_mc_version=1.21.3
+./gradlew build -Ptarget_mc_version=1.21.4
 ```
 
 - MC 1.20.1 build requires Python 3 with `nbtlib` package (for NBT structure conversion)
