@@ -1,11 +1,6 @@
 {
   "replace": false,
   "values": [
-    "minecraft:wheat",
-    "minecraft:pumpkin_stem",
-    "minecraft:melon_stem",
-    "minecraft:potatoes",
-    "minecraft:carrots",
-    "minecraft:beetroots"
+    "#farmersmiracle:grains_vanilla"
   ]
 }
