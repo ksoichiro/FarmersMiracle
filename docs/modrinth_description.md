@@ -54,12 +54,20 @@ Each advancement grants **"Blessing of Grains"** buffs:
 
 ### Multi-Loader Support
 This mod is built with **Architectury** and supports **multiple mod loaders and versions**!
+- **Fabric** and **NeoForge** for Minecraft 1.21.3
 - **Fabric** and **NeoForge** for Minecraft 1.21.1
 - **Fabric** and **Forge** for Minecraft 1.20.1
 - Download the correct version for your mod loader
 - Shared codebase ensures consistent experience across loaders
 
 ### Requirements
+
+#### Minecraft 1.21.3
+- **Mod Loader**:
+  - Fabric Loader 0.17.3+ with Fabric API 0.107.3+1.21.3, OR
+  - NeoForge 21.3.95+
+- **Dependencies**:
+  - Architectury API 14.0.4+
 
 #### Minecraft 1.21.1
 - **Mod Loader**:
@@ -124,6 +132,6 @@ Check out the **Gallery** above for screenshots showcasing:
 
 ---
 
-**Developed for Minecraft Java Edition 1.21.1 / 1.20.1**
+**Developed for Minecraft Java Edition 1.21.3 / 1.21.1 / 1.20.1**
 
 Collect the orbs. Bless your harvest. 🌾
