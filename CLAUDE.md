@@ -33,6 +33,7 @@
 - **BuffedPlayerCache**: Rebuilt every server tick from online players via `TickEvent.SERVER_POST`. No special login/logout handling needed.
 - **Mixin re-entrancy**: `CropBlockMixin` / `StemBlockMixin` use a static boolean guard to prevent infinite recursion when bonus `randomTick` calls re-trigger the mixin.
 - **Crop tag**: `farmersmiracle:grains` tag exists but Mixins currently target `CropBlock`/`StemBlock` classes directly.
+- **External mod compatibility**: `grains` tag uses sub-tag composition (`grains_vanilla`, `grains_farmersdelight`, `grains_croptopia`, `grains_pamhc2crops`, `grains_culturaldelights`). Sub-tags are referenced with `"required": false` so missing mods are safely ignored. Only grain/vegetable crops are included; fruits, herbs, beverages, and fiber crops are excluded.
 
 ### Structure Placement
 

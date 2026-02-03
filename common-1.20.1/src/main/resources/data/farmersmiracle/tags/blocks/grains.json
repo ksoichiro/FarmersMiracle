@@ -1,6 +1,10 @@
 {
   "replace": false,
   "values": [
-    "#farmersmiracle:grains_vanilla"
+    "#farmersmiracle:grains_vanilla",
+    { "id": "#farmersmiracle:grains_farmersdelight", "required": false },
+    { "id": "#farmersmiracle:grains_croptopia", "required": false },
+    { "id": "#farmersmiracle:grains_pamhc2crops", "required": false },
+    { "id": "#farmersmiracle:grains_culturaldelights", "required": false }
   ]
 }

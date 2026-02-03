@@ -17,6 +17,14 @@ A Minecraft mod that adds three temple structures with collectible orbs. Gatheri
   - **Growth I–IV**: Increases crop growth speed (stacks with each orb collected, +3% per level)
   - **Spread I**: Expands buff range from 16 to 24 blocks (granted by collecting all 3 orbs)
   - Target crops: Wheat, Pumpkin, Melon, Potato, Carrot, Beetroot
+- **Mod Compatibility** — Built-in support for crops from popular mods:
+  - [Farmer's Delight](https://modrinth.com/mod/farmers-delight) (`farmersdelight`)
+  - [Croptopia](https://modrinth.com/mod/croptopia) (`croptopia`)
+  - [Pam's HarvestCraft 2 - Crops](https://www.curseforge.com/minecraft/mc-mods/pams-harvestcraft-2-crops) (`pamhc2crops`)
+  - [Cultural Delights](https://modrinth.com/mod/cultural-delights) (`culturaldelights`)
+  - Only grain and vegetable crops are included; fruits, herbs, and beverages are excluded
+  - These mods are **not required** — compatibility entries are ignored if the mod is not installed
+  - You can add support for other mods by creating a datapack that appends entries to the `farmersmiracle:grains` block tag
 
 ## Requirements
 

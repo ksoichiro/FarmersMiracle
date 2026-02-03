@@ -37,6 +37,15 @@ Each advancement grants **"Blessing of Grains"** buffs:
 - **Target crops**: Wheat, Pumpkin, Melon, Potato, Carrot, Beetroot
 - Buffs are permanent and persist across sessions
 
+### 🤝 Mod Compatibility
+Crop growth buffs also apply to grain and vegetable crops from the following mods (no additional setup required):
+- **Farmer's Delight** (`farmersdelight`) — Cabbages, Onions, Tomatoes, Rice
+- **Croptopia** (`croptopia`) — Barley, Corn, Oat, Rice, and many more vegetables
+- **Pam's HarvestCraft 2 - Crops** (`pamhc2crops`) — Barley, Corn, Rice, Rye, and many more vegetables
+- **Cultural Delights** (`culturaldelights`) — Corn, Cucumbers, Eggplants
+
+> **Note**: Only grain and vegetable crops are included by default. Fruits, herbs, and beverages are not covered. You can add support for additional crops or mods by creating a datapack that appends entries to the `farmersmiracle:grains` block tag.
+
 ---
 
 ## 📖 How to Play
@@ -87,6 +96,7 @@ This mod is built with **Architectury** and supports **multiple mod loaders and 
 - Works alongside other world generation mods
 - Compatible with performance mods (Sodium, Starlight, etc.)
 - No conflicts with other mods — uses only vanilla blocks for structures
+- Built-in crop support for Farmer's Delight, Croptopia, Pam's HarvestCraft 2, and Cultural Delights (these mods are **not required**)
 
 ---
 
