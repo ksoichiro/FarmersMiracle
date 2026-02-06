@@ -51,14 +51,14 @@
 
 - `RegistryAccess.registryOrThrow()` was renamed to `lookupOrThrow()` in 1.21.2+
 - `Item.Properties` requires `.setId(ResourceKey)` since 1.21.2+. The `common-1.21.3` module overrides `ModItems.java` from `common-shared` via `java.filter.exclude` in build.gradle
-- Mixin JSON must not include `refmap` field — it causes NeoForge to use intermediary names instead of Mojang mappings, resulting in mixin apply failures
+- Mixin `refmap` handling differs by platform: Fabric needs `refmap` in mixin JSON (intermediary mappings), NeoForge must NOT have it (causes intermediary name resolution). Common mixin JSON includes `refmap` for Fabric; NeoForge modules have their own mixin JSON without `refmap` in `src/main/resources/` (takes precedence over common's version via ShadowJar merge order)
 - `neoforge-1.21.3/gradle.properties` must contain `loom.platform=neoforge` for Architectury Loom to create the `neoForge` dependency configuration
 
 ## MC 1.21.4 Notes
 
 - Java code is identical to 1.21.3 (`setId()`, `lookupOrThrow()` unchanged)
 - `assets/<namespace>/items/<id>.json` item model definitions are required (new in 1.21.4). These reference existing `models/item/` models
-- Mixin `refmap` omission and `loom.platform=neoforge` settings carry over from 1.21.3
+- Mixin `refmap` platform split and `loom.platform=neoforge` settings carry over from 1.21.3
 
 ## Architectury API
 
