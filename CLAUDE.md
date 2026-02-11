@@ -4,7 +4,7 @@
 
 - Mod ID: `farmersmiracle`
 - Package: `com.farmersmiracle`
-- Architectury-based Minecraft mod targeting MC 1.20.1 (Fabric + Forge), MC 1.21.1 (Fabric + NeoForge), MC 1.21.3 (Fabric + NeoForge), and MC 1.21.4 (Fabric + NeoForge)
+- Architectury-based Minecraft mod targeting MC 1.20.1 (Fabric + Forge), MC 1.21.1 (Fabric + NeoForge), MC 1.21.3 (Fabric + NeoForge), MC 1.21.4 (Fabric + NeoForge), and MC 1.21.5 (Fabric + NeoForge)
 - Gradle multi-project setup
 
 ## Module Structure
@@ -16,17 +16,20 @@
 | `common-1.21.1` | Version-specific code (events, data, mixins) and resources for MC 1.21.1 |
 | `common-1.21.3` | Version-specific code (events, data, mixins) and resources for MC 1.21.3. `registryOrThrow` → `lookupOrThrow` API change |
 | `common-1.21.4` | Version-specific code (events, data, mixins) and resources for MC 1.21.4. Adds `assets/<namespace>/items/` item model definitions |
+| `common-1.21.5` | Version-specific code (events, data, mixins) and resources for MC 1.21.5. NBT API changes (`getCompoundOrEmpty`, default-value getters) |
 | `fabric-base` | Fabric-specific code (currently empty) |
 | `fabric-1.20.1` | Fabric entrypoint for MC 1.20.1 |
 | `fabric-1.21.1` | Fabric entrypoint for MC 1.21.1 |
 | `fabric-1.21.3` | Fabric entrypoint for MC 1.21.3 |
 | `fabric-1.21.4` | Fabric entrypoint for MC 1.21.4 |
+| `fabric-1.21.5` | Fabric entrypoint for MC 1.21.5 |
 | `forge-base` | Forge-specific code (currently empty) |
 | `forge-1.20.1` | Forge entrypoint for MC 1.20.1 |
 | `neoforge-base` | NeoForge-specific code (currently empty) |
 | `neoforge-1.21.1` | NeoForge entrypoint for MC 1.21.1 |
 | `neoforge-1.21.3` | NeoForge entrypoint for MC 1.21.3 |
 | `neoforge-1.21.4` | NeoForge entrypoint for MC 1.21.4 |
+| `neoforge-1.21.5` | NeoForge entrypoint for MC 1.21.5 |
 
 ## Key Implementation Details
 
@@ -60,6 +63,15 @@
 - `assets/<namespace>/items/<id>.json` item model definitions are required (new in 1.21.4). These reference existing `models/item/` models
 - Mixin `refmap` platform split and `loom.platform=neoforge` settings carry over from 1.21.3
 
+## MC 1.21.5 Notes
+
+- **SavedData**: `SavedData.Factory` removed. Use `SavedDataType` with `Codec` for serialization. `save()` override no longer exists; encode/decode handled by codec. `DimensionDataStorage.computeIfAbsent(SavedDataType<T>)` is the new API
+- **CompoundTag**: getter methods (`getCompound`, `getInt`, `getBoolean`, etc.) now return `Optional`. Use `getCompoundOrEmpty(key)` / `getIntOr(key, default)` / `getBooleanOr(key, default)` for old behavior. `getAllKeys()` renamed to `keySet()`
+- **NeoForge**: `@EventBusSubscriber(bus = Bus.MOD)` deprecated for removal. Use `IEventBus.addListener()` in mod constructor instead (see `FarmersMiracleNeoForge.java` in neoforge-1.21.5)
+- **Advancement background**: `DisplayInfo.background` changed from `ResourceLocation` to `ClientAsset`. JSON format: `"minecraft:block/farmland_moist"` instead of `"minecraft:textures/block/farmland_moist.png"` (`textures/` prefix and `.png` suffix are auto-derived)
+- Java code otherwise identical to 1.21.4 (`setId()`, `lookupOrThrow()`, `items/` definitions unchanged)
+- Mixin `refmap` platform split and `loom.platform=neoforge` settings carry over from 1.21.3/1.21.4
+
 ## Architectury API
 
 The Fabric implementation of `ParticleProviderRegistry` (Architectury 13.0.8) has `register(ParticleType, DeferredParticleProvider)` as a no-op. Use each platform's API directly for particle provider registration:
@@ -69,7 +81,7 @@ The Fabric implementation of `ParticleProviderRegistry` (Architectury 13.0.8) ha
 ## Build & Test
 
 ```sh
-# Build for default version (1.21.4)
+# Build for default version (1.21.5)
 ./gradlew build
 
 # Build for a specific version
@@ -77,6 +89,7 @@ The Fabric implementation of `ParticleProviderRegistry` (Architectury 13.0.8) ha
 ./gradlew build -Ptarget_mc_version=1.21.1
 ./gradlew build -Ptarget_mc_version=1.21.3
 ./gradlew build -Ptarget_mc_version=1.21.4
+./gradlew build -Ptarget_mc_version=1.21.5
 ```
 
 - MC 1.20.1 build requires Python 3 with `nbtlib` package (for NBT structure conversion)
