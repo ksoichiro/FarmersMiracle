@@ -1,0 +1,32 @@
+{
+  "parent": "farmersmiracle:root",
+  "criteria": {
+    "has_pumpkin_orb": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "farmersmiracle:pumpkin_orb"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "display": {
+    "icon": {
+      "id": "farmersmiracle:pumpkin_orb"
+    },
+    "title": {
+      "translate": "advancements.farmersmiracle.fruit_of_the_earth.title"
+    },
+    "description": {
+      "translate": "advancements.farmersmiracle.fruit_of_the_earth.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  }
+}

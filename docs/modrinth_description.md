@@ -63,6 +63,7 @@ Crop growth buffs also apply to grain and vegetable crops from the following mod
 
 ### Multi-Loader Support
 This mod is built with **Architectury** and supports **multiple mod loaders and versions**!
+- **Fabric** and **NeoForge** for Minecraft 1.21.7
 - **Fabric** and **NeoForge** for Minecraft 1.21.6
 - **Fabric** and **NeoForge** for Minecraft 1.21.5
 - **Fabric** and **NeoForge** for Minecraft 1.21.4
@@ -73,6 +74,13 @@ This mod is built with **Architectury** and supports **multiple mod loaders and 
 - Shared codebase ensures consistent experience across loaders
 
 ### Requirements
+
+#### Minecraft 1.21.7
+- **Mod Loader**:
+  - Fabric Loader 0.16.13+ with Fabric API 0.128.2+1.21.7, OR
+  - NeoForge 21.7.25+
+- **Dependencies**:
+  - Architectury API 17.0.8+
 
 #### Minecraft 1.21.6
 - **Mod Loader**:
@@ -166,6 +174,6 @@ Check out the **Gallery** above for screenshots showcasing:
 
 ---
 
-**Developed for Minecraft Java Edition 1.21.6 / 1.21.5 / 1.21.4 / 1.21.3 / 1.21.1 / 1.20.1**
+**Developed for Minecraft Java Edition 1.21.7 / 1.21.6 / 1.21.5 / 1.21.4 / 1.21.3 / 1.21.1 / 1.20.1**
 
 Collect the orbs. Bless your harvest. 🌾
