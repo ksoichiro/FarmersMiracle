@@ -11,37 +11,37 @@
 
 | Module | Role |
 |---|---|
-| `common-shared` | Mod main class, registry, buff logic. Not a Gradle subproject; included as srcDir from version-specific modules |
-| `common-1.20.1` | Version-specific code (events, data, mixins) and resources for MC 1.20.1. NBT structures are generated at build time from 1.21.1 sources via `convertNbt` task |
-| `common-1.21.1` | Version-specific code (events, data, mixins) and resources for MC 1.21.1 |
-| `common-1.21.3` | Version-specific code (events, data, mixins) and resources for MC 1.21.3. `registryOrThrow` → `lookupOrThrow` API change |
-| `common-1.21.4` | Version-specific code (events, data, mixins) and resources for MC 1.21.4. Adds `assets/<namespace>/items/` item model definitions |
-| `common-1.21.5` | Version-specific code (events, data, mixins) and resources for MC 1.21.5. NBT API changes (`getCompoundOrEmpty`, default-value getters) |
-| `common-1.21.6` | Version-specific code (events, data, mixins) and resources for MC 1.21.6. `Entity.server` field became private (`getServer()` required) |
-| `common-1.21.7` | Version-specific code (events, data, mixins) and resources for MC 1.21.7. No API changes from 1.21.6 |
-| `common-1.21.8` | Version-specific code (events, data, mixins) and resources for MC 1.21.8. No API changes from 1.21.7 |
-| `common-1.21.9` | Version-specific code (events, data, mixins) and resources for MC 1.21.9. `pack.mcmeta` uses `min_format`/`max_format` instead of `pack_format` |
-| `fabric-base` | Fabric-specific code (currently empty) |
-| `fabric-1.20.1` | Fabric entrypoint for MC 1.20.1 |
-| `fabric-1.21.1` | Fabric entrypoint for MC 1.21.1 |
-| `fabric-1.21.3` | Fabric entrypoint for MC 1.21.3 |
-| `fabric-1.21.4` | Fabric entrypoint for MC 1.21.4 |
-| `fabric-1.21.5` | Fabric entrypoint for MC 1.21.5 |
-| `fabric-1.21.6` | Fabric entrypoint for MC 1.21.6 |
-| `fabric-1.21.7` | Fabric entrypoint for MC 1.21.7 |
-| `fabric-1.21.8` | Fabric entrypoint for MC 1.21.8 |
-| `fabric-1.21.9` | Fabric entrypoint for MC 1.21.9 |
-| `forge-base` | Forge-specific code (currently empty) |
-| `forge-1.20.1` | Forge entrypoint for MC 1.20.1 |
-| `neoforge-base` | NeoForge-specific code (currently empty) |
-| `neoforge-1.21.1` | NeoForge entrypoint for MC 1.21.1 |
-| `neoforge-1.21.3` | NeoForge entrypoint for MC 1.21.3 |
-| `neoforge-1.21.4` | NeoForge entrypoint for MC 1.21.4 |
-| `neoforge-1.21.5` | NeoForge entrypoint for MC 1.21.5 |
-| `neoforge-1.21.6` | NeoForge entrypoint for MC 1.21.6 |
-| `neoforge-1.21.7` | NeoForge entrypoint for MC 1.21.7 |
-| `neoforge-1.21.8` | NeoForge entrypoint for MC 1.21.8 |
-| `neoforge-1.21.9` | NeoForge entrypoint for MC 1.21.9 |
+| `common/shared` | Mod main class, registry, buff logic. Not a Gradle subproject; included as srcDir from version-specific modules |
+| `common/1.20.1` | Version-specific code (events, data, mixins) and resources for MC 1.20.1. NBT structures are generated at build time from 1.21.1 sources via `convertNbt` task |
+| `common/1.21.1` | Version-specific code (events, data, mixins) and resources for MC 1.21.1 |
+| `common/1.21.3` | Version-specific code (events, data, mixins) and resources for MC 1.21.3. `registryOrThrow` → `lookupOrThrow` API change |
+| `common/1.21.4` | Version-specific code (events, data, mixins) and resources for MC 1.21.4. Adds `assets/<namespace>/items/` item model definitions |
+| `common/1.21.5` | Version-specific code (events, data, mixins) and resources for MC 1.21.5. NBT API changes (`getCompoundOrEmpty`, default-value getters) |
+| `common/1.21.6` | Version-specific code (events, data, mixins) and resources for MC 1.21.6. `Entity.server` field became private (`getServer()` required) |
+| `common/1.21.7` | Version-specific code (events, data, mixins) and resources for MC 1.21.7. No API changes from 1.21.6 |
+| `common/1.21.8` | Version-specific code (events, data, mixins) and resources for MC 1.21.8. No API changes from 1.21.7 |
+| `common/1.21.9` | Version-specific code (events, data, mixins) and resources for MC 1.21.9. `pack.mcmeta` uses `min_format`/`max_format` instead of `pack_format` |
+| `fabric/base` | Fabric-specific code (currently empty) |
+| `fabric/1.20.1` | Fabric entrypoint for MC 1.20.1 |
+| `fabric/1.21.1` | Fabric entrypoint for MC 1.21.1 |
+| `fabric/1.21.3` | Fabric entrypoint for MC 1.21.3 |
+| `fabric/1.21.4` | Fabric entrypoint for MC 1.21.4 |
+| `fabric/1.21.5` | Fabric entrypoint for MC 1.21.5 |
+| `fabric/1.21.6` | Fabric entrypoint for MC 1.21.6 |
+| `fabric/1.21.7` | Fabric entrypoint for MC 1.21.7 |
+| `fabric/1.21.8` | Fabric entrypoint for MC 1.21.8 |
+| `fabric/1.21.9` | Fabric entrypoint for MC 1.21.9 |
+| `forge/base` | Forge-specific code (currently empty) |
+| `forge/1.20.1` | Forge entrypoint for MC 1.20.1 |
+| `neoforge/base` | NeoForge-specific code (currently empty) |
+| `neoforge/1.21.1` | NeoForge entrypoint for MC 1.21.1 |
+| `neoforge/1.21.3` | NeoForge entrypoint for MC 1.21.3 |
+| `neoforge/1.21.4` | NeoForge entrypoint for MC 1.21.4 |
+| `neoforge/1.21.5` | NeoForge entrypoint for MC 1.21.5 |
+| `neoforge/1.21.6` | NeoForge entrypoint for MC 1.21.6 |
+| `neoforge/1.21.7` | NeoForge entrypoint for MC 1.21.7 |
+| `neoforge/1.21.8` | NeoForge entrypoint for MC 1.21.8 |
+| `neoforge/1.21.9` | NeoForge entrypoint for MC 1.21.9 |
 
 ## Key Implementation Details
 
@@ -65,9 +65,9 @@
 ## MC 1.21.3 Notes
 
 - `RegistryAccess.registryOrThrow()` was renamed to `lookupOrThrow()` in 1.21.2+
-- `Item.Properties` requires `.setId(ResourceKey)` since 1.21.2+. The `common-1.21.3` module overrides `ModItems.java` from `common-shared` via `java.filter.exclude` in build.gradle
+- `Item.Properties` requires `.setId(ResourceKey)` since 1.21.2+. The `common/1.21.3` module overrides `ModItems.java` from `common/shared` via `java.filter.exclude` in build.gradle
 - Mixin `refmap` handling differs by platform: Fabric needs `refmap` in mixin JSON (intermediary mappings), NeoForge must NOT have it (causes intermediary name resolution). Common mixin JSON includes `refmap` for Fabric; NeoForge modules have their own mixin JSON without `refmap` in `src/main/resources/` (takes precedence over common's version via ShadowJar merge order)
-- `neoforge-1.21.3/gradle.properties` must contain `loom.platform=neoforge` for Architectury Loom to create the `neoForge` dependency configuration
+- `neoforge/1.21.3/gradle.properties` must contain `loom.platform=neoforge` for Architectury Loom to create the `neoForge` dependency configuration
 
 ## MC 1.21.4 Notes
 
@@ -79,7 +79,7 @@
 
 - **SavedData**: `SavedData.Factory` removed. Use `SavedDataType` with `Codec` for serialization. `save()` override no longer exists; encode/decode handled by codec. `DimensionDataStorage.computeIfAbsent(SavedDataType<T>)` is the new API
 - **CompoundTag**: getter methods (`getCompound`, `getInt`, `getBoolean`, etc.) now return `Optional`. Use `getCompoundOrEmpty(key)` / `getIntOr(key, default)` / `getBooleanOr(key, default)` for old behavior. `getAllKeys()` renamed to `keySet()`
-- **NeoForge**: `@EventBusSubscriber(bus = Bus.MOD)` deprecated for removal. Use `IEventBus.addListener()` in mod constructor instead (see `FarmersMiracleNeoForge.java` in neoforge-1.21.5)
+- **NeoForge**: `@EventBusSubscriber(bus = Bus.MOD)` deprecated for removal. Use `IEventBus.addListener()` in mod constructor instead (see `FarmersMiracleNeoForge.java` in neoforge/1.21.5)
 - **Advancement background**: `DisplayInfo.background` changed from `ResourceLocation` to `ClientAsset`. JSON format: `"minecraft:block/farmland_moist"` instead of `"minecraft:textures/block/farmland_moist.png"` (`textures/` prefix and `.png` suffix are auto-derived)
 - Java code otherwise identical to 1.21.4 (`setId()`, `lookupOrThrow()`, `items/` definitions unchanged)
 - Mixin `refmap` platform split and `loom.platform=neoforge` settings carry over from 1.21.3/1.21.4
