@@ -7,10 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-02-22
+
 ### Added
 
+- Minecraft 1.21.11 support (Fabric + NeoForge)
+- Minecraft 1.21.10 support (Fabric + NeoForge)
+- Minecraft 1.21.9 support (Fabric + NeoForge)
+- Minecraft 1.21.8 support (Fabric + NeoForge)
+- Minecraft 1.21.7 support (Fabric + NeoForge)
 - Minecraft 1.21.6 support (Fabric + NeoForge)
 - Minecraft 1.21.5 support (Fabric + NeoForge)
+- Modrinth release automation scripts
+
+### Changed
+
+- Reorganized version directories under platform parent dirs (e.g., `common-1.21.10` → `common/1.21.10`)
 
 ## [0.2.0] - 2026-02-06
 
@@ -54,6 +66,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Bump Fabric Loader minimum to 0.16.10 for MC 1.20.1
 - Resolve Forge 1.20.1 crash by removing intermediary refmap and registering mod event bus
 
-[Unreleased]: https://github.com/ksoichiro/FarmersMiracle/compare/v0.2.0...HEAD
+[Unreleased]: https://github.com/ksoichiro/FarmersMiracle/compare/v0.3.0...HEAD
+[0.3.0]: https://github.com/ksoichiro/FarmersMiracle/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/ksoichiro/FarmersMiracle/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/ksoichiro/FarmersMiracle/releases/tag/v0.1.0
