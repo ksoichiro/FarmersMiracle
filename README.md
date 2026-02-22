@@ -28,13 +28,13 @@ A Minecraft mod that adds three temple structures with collectible orbs. Gatheri
 
 ## Requirements
 
-- Minecraft 1.21.10, 1.21.9, 1.21.8, 1.21.7, 1.21.6, 1.21.5, 1.21.4, 1.21.3, 1.21.1, or 1.20.1
-- Fabric, NeoForge (1.21.10/1.21.9/1.21.8/1.21.7/1.21.6/1.21.5/1.21.4/1.21.3/1.21.1), or Forge (1.20.1)
+- Minecraft 1.21.11, 1.21.10, 1.21.9, 1.21.8, 1.21.7, 1.21.6, 1.21.5, 1.21.4, 1.21.3, 1.21.1, or 1.20.1
+- Fabric, NeoForge (1.21.11/1.21.10/1.21.9/1.21.8/1.21.7/1.21.6/1.21.5/1.21.4/1.21.3/1.21.1), or Forge (1.20.1)
 
 ## Building
 
 ```sh
-# Build for default version (1.21.10)
+# Build for default version (1.21.11)
 ./gradlew build
 
 # Build for a specific version
@@ -48,6 +48,7 @@ A Minecraft mod that adds three temple structures with collectible orbs. Gatheri
 ./gradlew build -Ptarget_mc_version=1.21.8
 ./gradlew build -Ptarget_mc_version=1.21.9
 ./gradlew build -Ptarget_mc_version=1.21.10
+./gradlew build -Ptarget_mc_version=1.21.11
 ```
 
 ## Project Structure
@@ -55,6 +56,7 @@ A Minecraft mod that adds three temple structures with collectible orbs. Gatheri
 | Module | Description |
 |---|---|
 | `common-shared` | Loader/version-independent common code |
+| `common-1.21.11` | Common resources and Mixins for MC 1.21.11 |
 | `common-1.21.10` | Common resources and Mixins for MC 1.21.10 |
 | `common-1.21.9` | Common resources and Mixins for MC 1.21.9 |
 | `common-1.21.8` | Common resources and Mixins for MC 1.21.8 |
@@ -66,6 +68,7 @@ A Minecraft mod that adds three temple structures with collectible orbs. Gatheri
 | `common-1.21.1` | Common resources and Mixins for MC 1.21.1 |
 | `common-1.20.1` | Common resources and Mixins for MC 1.20.1 |
 | `fabric-base` | Fabric-specific base code |
+| `fabric-1.21.11` | Fabric entrypoint for MC 1.21.11 |
 | `fabric-1.21.10` | Fabric entrypoint for MC 1.21.10 |
 | `fabric-1.21.9` | Fabric entrypoint for MC 1.21.9 |
 | `fabric-1.21.8` | Fabric entrypoint for MC 1.21.8 |
@@ -77,6 +80,7 @@ A Minecraft mod that adds three temple structures with collectible orbs. Gatheri
 | `fabric-1.21.1` | Fabric entrypoint for MC 1.21.1 |
 | `fabric-1.20.1` | Fabric entrypoint for MC 1.20.1 |
 | `neoforge-base` | NeoForge-specific base code |
+| `neoforge-1.21.11` | NeoForge entrypoint for MC 1.21.11 |
 | `neoforge-1.21.10` | NeoForge entrypoint for MC 1.21.10 |
 | `neoforge-1.21.9` | NeoForge entrypoint for MC 1.21.9 |
 | `neoforge-1.21.8` | NeoForge entrypoint for MC 1.21.8 |

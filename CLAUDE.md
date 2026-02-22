@@ -4,7 +4,7 @@
 
 - Mod ID: `farmersmiracle`
 - Package: `com.farmersmiracle`
-- Architectury-based Minecraft mod targeting MC 1.20.1 (Fabric + Forge), MC 1.21.1 (Fabric + NeoForge), MC 1.21.3 (Fabric + NeoForge), MC 1.21.4 (Fabric + NeoForge), MC 1.21.5 (Fabric + NeoForge), MC 1.21.6 (Fabric + NeoForge), MC 1.21.7 (Fabric + NeoForge), MC 1.21.8 (Fabric + NeoForge), MC 1.21.9 (Fabric + NeoForge), and MC 1.21.10 (Fabric + NeoForge)
+- Architectury-based Minecraft mod targeting MC 1.20.1 (Fabric + Forge), MC 1.21.1 (Fabric + NeoForge), MC 1.21.3 (Fabric + NeoForge), MC 1.21.4 (Fabric + NeoForge), MC 1.21.5 (Fabric + NeoForge), MC 1.21.6 (Fabric + NeoForge), MC 1.21.7 (Fabric + NeoForge), MC 1.21.8 (Fabric + NeoForge), MC 1.21.9 (Fabric + NeoForge), MC 1.21.10 (Fabric + NeoForge), and MC 1.21.11 (Fabric + NeoForge)
 - Gradle multi-project setup
 
 ## Module Structure
@@ -22,6 +22,7 @@
 | `common/1.21.8` | Version-specific code (events, data, mixins) and resources for MC 1.21.8. No API changes from 1.21.7 |
 | `common/1.21.9` | Version-specific code (events, data, mixins) and resources for MC 1.21.9. `pack.mcmeta` uses `min_format`/`max_format` instead of `pack_format` |
 | `common/1.21.10` | Version-specific code (events, data, mixins) and resources for MC 1.21.10. No API changes from 1.21.9 |
+| `common/1.21.11` | Version-specific code (events, data, mixins) and resources for MC 1.21.11. `ResourceLocation` renamed to `Identifier` |
 | `fabric/base` | Fabric-specific code (currently empty) |
 | `fabric/1.20.1` | Fabric entrypoint for MC 1.20.1 |
 | `fabric/1.21.1` | Fabric entrypoint for MC 1.21.1 |
@@ -33,6 +34,7 @@
 | `fabric/1.21.8` | Fabric entrypoint for MC 1.21.8 |
 | `fabric/1.21.9` | Fabric entrypoint for MC 1.21.9 |
 | `fabric/1.21.10` | Fabric entrypoint for MC 1.21.10 |
+| `fabric/1.21.11` | Fabric entrypoint for MC 1.21.11 |
 | `forge/base` | Forge-specific code (currently empty) |
 | `forge/1.20.1` | Forge entrypoint for MC 1.20.1 |
 | `neoforge/base` | NeoForge-specific code (currently empty) |
@@ -45,6 +47,7 @@
 | `neoforge/1.21.8` | NeoForge entrypoint for MC 1.21.8 |
 | `neoforge/1.21.9` | NeoForge entrypoint for MC 1.21.9 |
 | `neoforge/1.21.10` | NeoForge entrypoint for MC 1.21.10 |
+| `neoforge/1.21.11` | NeoForge entrypoint for MC 1.21.11 |
 
 ## Key Implementation Details
 
@@ -120,6 +123,12 @@
 - Java code identical to 1.21.9 (`setId()`, `lookupOrThrow()`, `items/` definitions, `SavedDataType` with Codec, `((ServerLevel) player.level()).getServer()` unchanged)
 - Mixin `refmap` platform split and `loom.platform=neoforge` settings carry over from 1.21.3/1.21.4/1.21.5/1.21.6/1.21.7/1.21.8/1.21.9
 
+## MC 1.21.11 Notes
+
+- **ResourceLocation → Identifier**: `net.minecraft.resources.ResourceLocation` renamed to `net.minecraft.resources.Identifier`. Factory method `Identifier.fromNamespaceAndPath()` unchanged. `getNamespace()` and `getPath()` unchanged. `ResourceKey` class is NOT renamed, but `ResourceKey.location()` → `ResourceKey.identifier()`
+- Java code otherwise identical to 1.21.10 (`setId()`, `lookupOrThrow()`, `items/` definitions, `SavedDataType` with Codec, `((ServerLevel) player.level()).getServer()` unchanged)
+- Mixin `refmap` platform split and `loom.platform=neoforge` settings carry over from 1.21.3/1.21.4/1.21.5/1.21.6/1.21.7/1.21.8/1.21.9/1.21.10
+
 ## Architectury API
 
 The Fabric implementation of `ParticleProviderRegistry` (Architectury 13.0.8) has `register(ParticleType, DeferredParticleProvider)` as a no-op. Use each platform's API directly for particle provider registration:
@@ -129,7 +138,7 @@ The Fabric implementation of `ParticleProviderRegistry` (Architectury 13.0.8) ha
 ## Build & Test
 
 ```sh
-# Build for default version (1.21.10)
+# Build for default version (1.21.11)
 ./gradlew build
 
 # Build for a specific version
@@ -143,6 +152,7 @@ The Fabric implementation of `ParticleProviderRegistry` (Architectury 13.0.8) ha
 ./gradlew build -Ptarget_mc_version=1.21.8
 ./gradlew build -Ptarget_mc_version=1.21.9
 ./gradlew build -Ptarget_mc_version=1.21.10
+./gradlew build -Ptarget_mc_version=1.21.11
 ```
 
 - MC 1.20.1 build requires Python 3 with `nbtlib` package (for NBT structure conversion)

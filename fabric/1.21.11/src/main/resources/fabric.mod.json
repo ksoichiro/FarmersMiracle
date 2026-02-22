@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "id": "farmersmiracle",
+  "version": "${version}",
+  "name": "Farmer's Miracle",
+  "description": "Collect three sacred orbs from small shrines to slightly boost crop growth around you.",
+  "authors": [
+    "ksoichiro"
+  ],
+  "contact": {
+    "homepage": "https://github.com/ksoichiro/FarmersMiracle",
+    "sources": "https://github.com/ksoichiro/FarmersMiracle"
+  },
+  "license": "LGPL-3.0",
+  "icon": "assets/farmersmiracle/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.farmersmiracle.fabric.FarmersMiracleFabric"
+    ],
+    "client": [
+      "com.farmersmiracle.fabric.FarmersMiracleFabricClient"
+    ]
+  },
+  "accessWidener": "farmersmiracle.accesswidener",
+  "mixins": [
+    "farmersmiracle.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.17.3",
+    "fabric-api": "*",
+    "architectury": ">=19.0.0",
+    "minecraft": "~1.21.11",
+    "java": ">=21"
+  }
+}
