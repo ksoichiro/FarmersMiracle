@@ -1,6 +1,6 @@
 ---
 name: mc-version-upgrade
-description: Checklist and procedures for adding support for a new Minecraft version. Use when adding a new MC version target to this Architectury mod.
+description: Checklist and procedures for adding support for a new Minecraft version. Use when adding a new MC version target to this mod.
 ---
 
 # Minecraft Version Upgrade Procedure
@@ -14,7 +14,6 @@ Before starting, gather the following information for the new MC version:
 - `java_version`
 - `fabric_loader_version`
 - `neoforge_version` (or `forge_version` for 1.20.x)
-- `architectury_api_version`
 - `fabric_api_version`
 - Base version to copy from (usually the latest existing version)
 
@@ -25,7 +24,7 @@ Check for breaking changes between the base version and the target version:
 - **Java API changes**: renamed/removed methods, new required method calls
 - **Resource format changes**: new required resource files, changed JSON schemas
 - **Mixin compatibility**: verify mixin targets still exist
-- **Build tooling**: Architectury Loom, Fabric Loom compatibility
+- **Build tooling**: Architectury Loom compatibility
 
 Past examples of version-specific changes:
 - 1.21.2+: `registryOrThrow()` → `lookupOrThrow()`, `Item.Properties` requires `.setId(ResourceKey)`
@@ -61,7 +60,6 @@ cp -R fabric-<base> fabric-<version>
 Update these files:
 - **`build.gradle`**: Change `commonModule` variable to `':common-<version>'`
 - **`src/main/resources/fabric.mod.json`**: Update `depends` section:
-  - `architectury`: `>=<new_architectury_version>`
   - `minecraft`: `~<new_mc_version>`
 
 ### 4. `neoforge-<version>/` module (or `forge-<version>/` for 1.20.x)
@@ -74,10 +72,9 @@ cp -R neoforge-<base> neoforge-<version>
 
 Update these files:
 - **`build.gradle`**: Change `commonModule` variable to `':common-<version>'`
-- **`src/main/resources/META-INF/neoforge.mods.toml`**: Update 3 dependency entries:
+- **`src/main/resources/META-INF/neoforge.mods.toml`**: Update 2 dependency entries:
   - `neoforge` versionRange: `[<major>.<minor>.0,)`
   - `minecraft` versionRange: `[<new_mc_version>]`
-  - `architectury` versionRange: `[<new_architectury_version>,)`
 - **`gradle.properties`**: Must contain `loom.platform=neoforge`
 
 ## Configuration & Documentation Update Checklist

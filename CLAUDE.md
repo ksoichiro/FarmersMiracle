@@ -4,7 +4,8 @@
 
 - Mod ID: `farmersmiracle`
 - Package: `com.farmersmiracle`
-- Architectury-based Minecraft mod targeting MC 1.20.1 (Fabric + Forge), MC 1.21.1 (Fabric + NeoForge), MC 1.21.3 (Fabric + NeoForge), MC 1.21.4 (Fabric + NeoForge), MC 1.21.5 (Fabric + NeoForge), MC 1.21.6 (Fabric + NeoForge), MC 1.21.7 (Fabric + NeoForge), MC 1.21.8 (Fabric + NeoForge), MC 1.21.9 (Fabric + NeoForge), MC 1.21.10 (Fabric + NeoForge), and MC 1.21.11 (Fabric + NeoForge)
+- Minecraft mod using Architectury Loom/Plugin (build-time only) targeting MC 1.20.1 (Fabric + Forge), MC 1.21.1 (Fabric + NeoForge), MC 1.21.3 (Fabric + NeoForge), MC 1.21.4 (Fabric + NeoForge), MC 1.21.5 (Fabric + NeoForge), MC 1.21.6 (Fabric + NeoForge), MC 1.21.7 (Fabric + NeoForge), MC 1.21.8 (Fabric + NeoForge), MC 1.21.9 (Fabric + NeoForge), MC 1.21.10 (Fabric + NeoForge), and MC 1.21.11 (Fabric + NeoForge)
+- No Architectury API runtime dependency; platform-native APIs used for registry, events, and creative tabs
 - Gradle multi-project setup
 
 ## Module Structure
@@ -54,7 +55,8 @@
 ### Buff System
 
 - **SavedData**: World-level `SavedData` stored in overworld as `farmersmiracle_player_buffs`. Maps player UUID to `{growthLevel (0-4), rangeExpanded (boolean)}`. Do not use `getPersistentData()` (NeoForge-only API).
-- **BuffedPlayerCache**: Rebuilt every server tick from online players via `TickEvent.SERVER_POST`. No special login/logout handling needed.
+- **BuffedPlayerCache**: Rebuilt every server tick from online players via platform-native server tick events. No special login/logout handling needed.
+- **Advancement events**: Handled by `PlayerAdvancementsMixin` (common mixin on `PlayerAdvancements.award()`), replacing Architectury's `PlayerEvent.PLAYER_ADVANCEMENT`
 - **Mixin re-entrancy**: `CropBlockMixin` / `StemBlockMixin` use a static boolean guard to prevent infinite recursion when bonus `randomTick` calls re-trigger the mixin.
 - **Crop tag**: `farmersmiracle:grains` tag exists but Mixins currently target `CropBlock`/`StemBlock` classes directly.
 - **External mod compatibility**: `grains` tag uses sub-tag composition (`grains_vanilla`, `grains_farmersdelight`, `grains_croptopia`, `grains_pamhc2crops`, `grains_culturaldelights`). Sub-tags are referenced with `"required": false` so missing mods are safely ignored. Only grain/vegetable crops are included; fruits, herbs, beverages, and fiber crops are excluded.
@@ -129,11 +131,14 @@
 - Java code otherwise identical to 1.21.10 (`setId()`, `lookupOrThrow()`, `items/` definitions, `SavedDataType` with Codec, `((ServerLevel) player.level()).getServer()` unchanged)
 - Mixin `refmap` platform split and `loom.platform=neoforge` settings carry over from 1.21.3/1.21.4/1.21.5/1.21.6/1.21.7/1.21.8/1.21.9/1.21.10
 
-## Architectury API
+## Architectury (Build-Time Only)
 
-The Fabric implementation of `ParticleProviderRegistry` (Architectury 13.0.8) has `register(ParticleType, DeferredParticleProvider)` as a no-op. Use each platform's API directly for particle provider registration:
-  - Fabric: `net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry`
-  - NeoForge: `RegisterParticleProvidersEvent`
+Architectury Loom and Plugin are used for build-time cross-platform support (remapping, multi-loader builds). Architectury API is NOT a runtime dependency. All registry, events, and creative tabs use platform-native APIs:
+- **Registry**: Fabric uses `Registry.register(BuiltInRegistries.*, ...)`. NeoForge/Forge use platform `DeferredRegister`
+- **Events**: Fabric uses `ServerTickEvents`/`ServerPlayConnectionEvents`. NeoForge uses `NeoForge.EVENT_BUS`. Forge uses `MinecraftForge.EVENT_BUS`
+- **Advancement events**: Common `PlayerAdvancementsMixin` works on all platforms
+- **Particle providers**: Fabric uses `ParticleFactoryRegistry`. NeoForge uses `RegisterParticleProvidersEvent`
+- **Common code**: `ModItems`/`ModEffects`/`ModParticles`/`ModCreativeTabs` expose `Supplier<T>` fields + factory methods; platform entrypoints set the suppliers during registration
 
 ## Build & Test
 

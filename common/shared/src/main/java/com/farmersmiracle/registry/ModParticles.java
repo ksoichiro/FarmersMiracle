@@ -17,22 +17,10 @@
  */
 package com.farmersmiracle.registry;
 
-import com.farmersmiracle.FarmersMiracle;
-import dev.architectury.registry.registries.DeferredRegister;
-import dev.architectury.registry.registries.RegistrySupplier;
-import net.minecraft.core.particles.ParticleType;
+import java.util.function.Supplier;
+
 import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraft.core.registries.Registries;
 
 public class ModParticles {
-    public static final DeferredRegister<ParticleType<?>> PARTICLES =
-            DeferredRegister.create(FarmersMiracle.MOD_ID, Registries.PARTICLE_TYPE);
-
-    public static final RegistrySupplier<SimpleParticleType> GRAIN_GROWTH =
-            PARTICLES.register("grain_growth", () -> new SimpleParticleType(false));
-
-    public static void register() {
-        PARTICLES.register();
-        FarmersMiracle.LOGGER.debug("Registered ModParticles");
-    }
+    public static Supplier<SimpleParticleType> GRAIN_GROWTH;
 }

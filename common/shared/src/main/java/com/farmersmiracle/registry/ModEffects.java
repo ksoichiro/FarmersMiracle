@@ -17,26 +17,11 @@
  */
 package com.farmersmiracle.registry;
 
-import com.farmersmiracle.FarmersMiracle;
-import com.farmersmiracle.effects.GrainGrowthEffect;
-import com.farmersmiracle.effects.GrainSpreadEffect;
-import dev.architectury.registry.registries.DeferredRegister;
-import dev.architectury.registry.registries.RegistrySupplier;
-import net.minecraft.core.registries.Registries;
+import java.util.function.Supplier;
+
 import net.minecraft.world.effect.MobEffect;
 
 public class ModEffects {
-    public static final DeferredRegister<MobEffect> EFFECTS =
-            DeferredRegister.create(FarmersMiracle.MOD_ID, Registries.MOB_EFFECT);
-
-    public static final RegistrySupplier<MobEffect> GRAIN_GROWTH =
-            EFFECTS.register("grain_growth", GrainGrowthEffect::new);
-
-    public static final RegistrySupplier<MobEffect> GRAIN_SPREAD =
-            EFFECTS.register("grain_spread", GrainSpreadEffect::new);
-
-    public static void register() {
-        EFFECTS.register();
-        FarmersMiracle.LOGGER.debug("Registered ModEffects");
-    }
+    public static Supplier<MobEffect> GRAIN_GROWTH;
+    public static Supplier<MobEffect> GRAIN_SPREAD;
 }

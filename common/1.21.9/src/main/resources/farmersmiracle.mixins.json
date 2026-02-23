@@ -6,7 +6,8 @@
   "mixins": [
     "CropBlockMixin",
     "StemBlockMixin",
-    "StructureStartMixin"
+    "StructureStartMixin",
+    "PlayerAdvancementsMixin"
   ],
   "refmap": "common-common-refmap.json",
   "injectors": {

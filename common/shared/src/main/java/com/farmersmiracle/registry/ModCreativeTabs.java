@@ -17,34 +17,10 @@
  */
 package com.farmersmiracle.registry;
 
-import com.farmersmiracle.FarmersMiracle;
-import dev.architectury.registry.CreativeTabRegistry;
-import dev.architectury.registry.registries.DeferredRegister;
-import dev.architectury.registry.registries.RegistrySupplier;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.chat.Component;
+import java.util.function.Supplier;
+
 import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.ItemStack;
 
 public class ModCreativeTabs {
-    public static final DeferredRegister<CreativeModeTab> TABS =
-            DeferredRegister.create(FarmersMiracle.MOD_ID, Registries.CREATIVE_MODE_TAB);
-
-    public static final RegistrySupplier<CreativeModeTab> FARMERS_MIRACLE_TAB = TABS.register(
-            "farmersmiracle",
-            () -> CreativeTabRegistry.create(builder ->
-                    builder.title(Component.translatable("itemGroup.farmersmiracle.farmersmiracle"))
-                            .icon(() -> new ItemStack(ModItems.WHEAT_ORB.get()))
-                            .displayItems((parameters, output) -> {
-                                output.accept(ModItems.WHEAT_ORB.get());
-                                output.accept(ModItems.PUMPKIN_ORB.get());
-                                output.accept(ModItems.MELON_ORB.get());
-                            })
-            )
-    );
-
-    public static void register() {
-        TABS.register();
-        FarmersMiracle.LOGGER.debug("Registered ModCreativeTabs");
-    }
+    public static Supplier<CreativeModeTab> FARMERS_MIRACLE_TAB;
 }

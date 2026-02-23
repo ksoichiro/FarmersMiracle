@@ -19,10 +19,7 @@ package com.farmersmiracle.events;
 
 import com.farmersmiracle.FarmersMiracle;
 import com.farmersmiracle.data.PlayerBuffData;
-import com.farmersmiracle.effects.BuffedPlayerCache;
 import com.farmersmiracle.registry.ModEffects;
-import dev.architectury.event.events.common.PlayerEvent;
-import dev.architectury.event.events.common.TickEvent;
 import net.minecraft.advancements.AdvancementHolder;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -32,8 +29,7 @@ import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 
 /**
- * Registers and handles mod events:
- * - Server tick: updates buffed player cache
+ * Handles mod events:
  * - Player advancement: grants buffs based on achievement
  * - Player join: restores MobEffect display from saved data
  */
@@ -49,13 +45,7 @@ public class FarmersMiracleEvents {
 
     private static final int INFINITE_DURATION = -1;
 
-    public static void register() {
-        TickEvent.SERVER_POST.register(BuffedPlayerCache::updateCache);
-        PlayerEvent.PLAYER_ADVANCEMENT.register(FarmersMiracleEvents::onAdvancement);
-        PlayerEvent.PLAYER_JOIN.register(FarmersMiracleEvents::onPlayerJoin);
-    }
-
-    private static void onAdvancement(ServerPlayer player, AdvancementHolder advancementHolder) {
+    public static void onAdvancement(ServerPlayer player, AdvancementHolder advancementHolder) {
         ResourceLocation id = advancementHolder.id();
         // Always use overworld for SavedData to avoid per-dimension fragmentation
         PlayerBuffData data = PlayerBuffData.get(player.getServer().overworld());
@@ -79,7 +69,7 @@ public class FarmersMiracleEvents {
         }
     }
 
-    private static void onPlayerJoin(ServerPlayer player) {
+    public static void onPlayerJoin(ServerPlayer player) {
         PlayerBuffData data = PlayerBuffData.get(player.getServer().overworld());
         int growthLevel = data.getGrowthLevel(player);
         if (growthLevel > 0) {

@@ -17,36 +17,36 @@
  */
 package com.farmersmiracle.registry;
 
-import com.farmersmiracle.FarmersMiracle;
-import dev.architectury.registry.CreativeTabRegistry;
-import dev.architectury.registry.registries.DeferredRegister;
-import dev.architectury.registry.registries.RegistrySupplier;
-import net.minecraft.core.registries.Registries;
+import java.util.function.Supplier;
+
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 
 public class ModItems {
-    public static final DeferredRegister<Item> ITEMS =
-            DeferredRegister.create(FarmersMiracle.MOD_ID, Registries.ITEM);
-
-    public static final RegistrySupplier<Item> WHEAT_ORB = ITEMS.register("wheat_orb",
-            () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(1)));
-
-    public static final RegistrySupplier<Item> PUMPKIN_ORB = ITEMS.register("pumpkin_orb",
-            () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(1)));
-
-    public static final RegistrySupplier<Item> MELON_ORB = ITEMS.register("melon_orb",
-            () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(1)));
-
+    public static Supplier<Item> WHEAT_ORB;
+    public static Supplier<Item> PUMPKIN_ORB;
+    public static Supplier<Item> MELON_ORB;
     // Icon-only items for advancement display
-    public static final RegistrySupplier<Item> ROOT_ICON = ITEMS.register("root_icon",
-            () -> new Item(new Item.Properties()));
+    public static Supplier<Item> ROOT_ICON;
+    public static Supplier<Item> PILGRIMAGE_ICON;
 
-    public static final RegistrySupplier<Item> PILGRIMAGE_ICON = ITEMS.register("pilgrimage_icon",
-            () -> new Item(new Item.Properties()));
+    public static Item createWheatOrb() {
+        return new Item(new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(1));
+    }
 
-    public static void register() {
-        ITEMS.register();
-        FarmersMiracle.LOGGER.debug("Registered ModItems");
+    public static Item createPumpkinOrb() {
+        return new Item(new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(1));
+    }
+
+    public static Item createMelonOrb() {
+        return new Item(new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(1));
+    }
+
+    public static Item createRootIcon() {
+        return new Item(new Item.Properties());
+    }
+
+    public static Item createPilgrimageIcon() {
+        return new Item(new Item.Properties());
     }
 }

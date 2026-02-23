@@ -6,7 +6,8 @@
   "mixins": [
     "CropBlockMixin",
     "StemBlockMixin",
-    "StructureStartMixin"
+    "StructureStartMixin",
+    "PlayerAdvancementsMixin"
   ],
   "injectors": {
     "defaultRequire": 1

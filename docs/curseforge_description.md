@@ -62,7 +62,7 @@ Crop growth buffs also apply to grain and vegetable crops from the following mod
 ## 🛠️ Technical Details
 
 ### Multi-Loader Support
-This mod is built with **Architectury** and supports **multiple mod loaders and versions**!
+This mod supports **multiple mod loaders and versions**!
 - **Fabric** and **NeoForge** for Minecraft 1.21.11
 - **Fabric** and **NeoForge** for Minecraft 1.21.10
 - **Fabric** and **NeoForge** for Minecraft 1.21.9
@@ -83,78 +83,56 @@ This mod is built with **Architectury** and supports **multiple mod loaders and 
 - **Mod Loader**:
   - Fabric Loader 0.17.3+ with Fabric API 0.141.3+1.21.11, OR
   - NeoForge 21.11.38-beta+
-- **Dependencies**:
-  - Architectury API 19.0.1+
 
 #### Minecraft 1.21.10
 - **Mod Loader**:
   - Fabric Loader 0.17.2+ with Fabric API 0.138.4+1.21.10, OR
   - NeoForge 21.10.64+
-- **Dependencies**:
-  - Architectury API 18.0.8+
 
 #### Minecraft 1.21.9
 - **Mod Loader**:
   - Fabric Loader 0.18.4+ with Fabric API 0.134.1+1.21.9, OR
   - NeoForge 21.9.16-beta+
-- **Dependencies**:
-  - Architectury API 18.0.3+
 
 #### Minecraft 1.21.8
 - **Mod Loader**:
   - Fabric Loader 0.16.13+ with Fabric API 0.136.0+1.21.8, OR
   - NeoForge 21.8.52+
-- **Dependencies**:
-  - Architectury API 17.0.8+
 
 #### Minecraft 1.21.7
 - **Mod Loader**:
   - Fabric Loader 0.16.13+ with Fabric API 0.128.2+1.21.7, OR
   - NeoForge 21.7.25+
-- **Dependencies**:
-  - Architectury API 17.0.8+
 
 #### Minecraft 1.21.6
 - **Mod Loader**:
   - Fabric Loader 0.17.3+ with Fabric API 0.127.1+1.21.6, OR
   - NeoForge 21.6.20+
-- **Dependencies**:
-  - Architectury API 17.0.6+
 
 #### Minecraft 1.21.5
 - **Mod Loader**:
   - Fabric Loader 0.17.3+ with Fabric API 0.128.2+1.21.5, OR
   - NeoForge 21.5.96+
-- **Dependencies**:
-  - Architectury API 16.1.4+
 
 #### Minecraft 1.21.4
 - **Mod Loader**:
   - Fabric Loader 0.17.3+ with Fabric API 0.119.2+1.21.4, OR
   - NeoForge 21.4.156+
-- **Dependencies**:
-  - Architectury API 15.0.3+
 
 #### Minecraft 1.21.3
 - **Mod Loader**:
   - Fabric Loader 0.17.3+ with Fabric API 0.107.3+1.21.3, OR
   - NeoForge 21.3.95+
-- **Dependencies**:
-  - Architectury API 14.0.4+
 
 #### Minecraft 1.21.1
 - **Mod Loader**:
   - Fabric Loader 0.17.3+ with Fabric API 0.116.7+1.21.1, OR
   - NeoForge 21.1.209+
-- **Dependencies**:
-  - Architectury API 13.0.8+
 
 #### Minecraft 1.20.1
 - **Mod Loader**:
   - Fabric Loader 0.16.10+ with Fabric API 0.92.2+1.20.1, OR
   - Forge 47.3.0+
-- **Dependencies**:
-  - Architectury API 9.2.14+
 
 ### Compatibility
 - Works alongside other world generation mods
@@ -181,7 +159,7 @@ Check out the **Gallery** tab above for screenshots showcasing:
 
 ## 🤝 Credits
 
-- Built with [Architectury](https://github.com/architectury/architectury-api)
+- Built with [Architectury Loom](https://github.com/architectury/architectury-loom) (build tooling only)
 
 ---
 
