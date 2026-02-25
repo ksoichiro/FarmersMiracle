@@ -99,6 +99,11 @@ public class FarmersMiracleNeoForge {
                 FarmersMiracleEvents.onPlayerJoin(sp);
             }
         });
+        bus.addListener((PlayerEvent.PlayerRespawnEvent event) -> {
+            if (event.getEntity() instanceof ServerPlayer sp) {
+                FarmersMiracleEvents.onPlayerJoin(sp);
+            }
+        });
     }
 
     private static void onRegisterParticleProviders(RegisterParticleProvidersEvent event) {

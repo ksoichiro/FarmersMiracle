@@ -29,6 +29,7 @@ import com.farmersmiracle.registry.ModParticles;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
+import net.fabricmc.fabric.api.entity.event.v1.ServerPlayerEvents;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import net.minecraft.core.Registry;
 import net.minecraft.core.particles.SimpleParticleType;
@@ -107,5 +108,7 @@ public class FarmersMiracleFabric implements ModInitializer {
         ServerTickEvents.END_SERVER_TICK.register(BuffedPlayerCache::updateCache);
         ServerPlayConnectionEvents.JOIN.register((handler, sender, server) ->
                 FarmersMiracleEvents.onPlayerJoin(handler.player));
+        ServerPlayerEvents.AFTER_RESPAWN.register((oldPlayer, newPlayer, alive) ->
+                FarmersMiracleEvents.onPlayerJoin(newPlayer));
     }
 }
