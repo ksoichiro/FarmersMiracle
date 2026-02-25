@@ -18,11 +18,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Minecraft 1.21.7 support (Fabric + NeoForge)
 - Minecraft 1.21.6 support (Fabric + NeoForge)
 - Minecraft 1.21.5 support (Fabric + NeoForge)
-- Modrinth release automation scripts
 
-### Changed
+### Fixed
 
-- Reorganized version directories under platform parent dirs (e.g., `common-1.21.10` → `common/1.21.10`)
+- Reapply buff effects on player respawn across all MC versions
+
+### Removed
+
+- Architectury API runtime dependency (replaced with platform-native APIs)
 
 ## [0.2.0] - 2026-02-06
 
