@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- Periodically reapply missing buff effects so the HUD icons no longer disappear while the buff is still active
+
 ## [0.3.0] - 2026-02-22
 
 ### Added

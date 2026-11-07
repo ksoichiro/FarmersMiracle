@@ -69,6 +69,28 @@ public class FarmersMiracleEvents {
         }
     }
 
+    /**
+     * Re-applies missing or outdated buff effects. The effects are display-only, but other mods or
+     * game mechanics can remove them (e.g. milk, cure-all effects), which hides the HUD icon while
+     * the buff itself (driven by saved data) keeps working. Called periodically from the server tick.
+     */
+    public static void ensureEffects(ServerPlayer player, PlayerBuffData data) {
+        int growthLevel = data.getGrowthLevel(player);
+        if (growthLevel > 0) {
+        Holder<MobEffect> growth = BuiltInRegistries.MOB_EFFECT.wrapAsHolder(ModEffects.GRAIN_GROWTH.get());
+            MobEffectInstance current = player.getEffect(growth);
+            if (current == null || current.getAmplifier() != growthLevel - 1) {
+                applyGrowthEffect(player, growthLevel);
+            }
+        }
+        if (data.isRangeExpanded(player)) {
+        Holder<MobEffect> spread = BuiltInRegistries.MOB_EFFECT.wrapAsHolder(ModEffects.GRAIN_SPREAD.get());
+            if (!player.hasEffect(spread)) {
+                applySpreadEffect(player);
+            }
+        }
+    }
+
     public static void onPlayerJoin(ServerPlayer player) {
         PlayerBuffData data = PlayerBuffData.get(player.getServer().overworld());
         int growthLevel = data.getGrowthLevel(player);
