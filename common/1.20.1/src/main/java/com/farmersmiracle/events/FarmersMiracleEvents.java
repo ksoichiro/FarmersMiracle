@@ -78,12 +78,16 @@ public class FarmersMiracleEvents {
         MobEffect growth = ModEffects.GRAIN_GROWTH.get();
             MobEffectInstance current = player.getEffect(growth);
             if (current == null || current.getAmplifier() != growthLevel - 1) {
+                FarmersMiracle.LOGGER.debug("Reapplying missing or outdated grain growth effect to {}",
+                        player.getName().getString());
                 applyGrowthEffect(player, growthLevel);
             }
         }
         if (data.isRangeExpanded(player)) {
         MobEffect spread = ModEffects.GRAIN_SPREAD.get();
             if (!player.hasEffect(spread)) {
+                FarmersMiracle.LOGGER.debug("Reapplying missing grain spread effect to {}",
+                        player.getName().getString());
                 applySpreadEffect(player);
             }
         }
