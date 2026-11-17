@@ -1,0 +1,32 @@
+{
+  "parent": "farmersmiracle:root",
+  "criteria": {
+    "has_wheat_orb": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "farmersmiracle:wheat_orb"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "display": {
+    "icon": {
+      "id": "farmersmiracle:wheat_orb"
+    },
+    "title": {
+      "translate": "advancements.farmersmiracle.the_first_harvest.title"
+    },
+    "description": {
+      "translate": "advancements.farmersmiracle.the_first_harvest.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  }
+}

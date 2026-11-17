@@ -28,13 +28,13 @@ A Minecraft mod that adds three temple structures with collectible orbs. Gatheri
 
 ## Requirements
 
-- Minecraft 1.21.11, 1.21.10, 1.21.9, 1.21.8, 1.21.7, 1.21.6, 1.21.5, 1.21.4, 1.21.3, 1.21.1, or 1.20.1
-- Fabric, NeoForge (1.21.11/1.21.10/1.21.9/1.21.8/1.21.7/1.21.6/1.21.5/1.21.4/1.21.3/1.21.1), or Forge (1.20.1)
+- Minecraft 26.3, 26.2, 26.1.2, 1.21.11, 1.21.10, 1.21.9, 1.21.8, 1.21.7, 1.21.6, 1.21.5, 1.21.4, 1.21.3, 1.21.1, or 1.20.1
+- Fabric, NeoForge (26.3/26.2/26.1.2/1.21.11/1.21.10/1.21.9/1.21.8/1.21.7/1.21.6/1.21.5/1.21.4/1.21.3/1.21.1), or Forge (1.20.1)
 
 ## Building
 
 ```sh
-# Build for default version (1.21.11)
+# Build for default version (26.3)
 ./gradlew build
 
 # Build for a specific version
@@ -49,6 +49,9 @@ A Minecraft mod that adds three temple structures with collectible orbs. Gatheri
 ./gradlew build -Ptarget_mc_version=1.21.9
 ./gradlew build -Ptarget_mc_version=1.21.10
 ./gradlew build -Ptarget_mc_version=1.21.11
+./gradlew build -Ptarget_mc_version=26.1.2
+./gradlew build -Ptarget_mc_version=26.2
+./gradlew build -Ptarget_mc_version=26.3
 ```
 
 ## Project Structure
@@ -56,6 +59,9 @@ A Minecraft mod that adds three temple structures with collectible orbs. Gatheri
 | Module | Description |
 |---|---|
 | `common-shared` | Loader/version-independent common code |
+| `common-26.3` | Common resources and Mixins for MC 26.3 |
+| `common-26.2` | Common resources and Mixins for MC 26.2 |
+| `common-26.1.2` | Common resources and Mixins for MC 26.1.2 |
 | `common-1.21.11` | Common resources and Mixins for MC 1.21.11 |
 | `common-1.21.10` | Common resources and Mixins for MC 1.21.10 |
 | `common-1.21.9` | Common resources and Mixins for MC 1.21.9 |
@@ -68,6 +74,9 @@ A Minecraft mod that adds three temple structures with collectible orbs. Gatheri
 | `common-1.21.1` | Common resources and Mixins for MC 1.21.1 |
 | `common-1.20.1` | Common resources and Mixins for MC 1.20.1 |
 | `fabric-base` | Fabric-specific base code |
+| `fabric-26.3` | Fabric entrypoint for MC 26.3 |
+| `fabric-26.2` | Fabric entrypoint for MC 26.2 |
+| `fabric-26.1.2` | Fabric entrypoint for MC 26.1.2 |
 | `fabric-1.21.11` | Fabric entrypoint for MC 1.21.11 |
 | `fabric-1.21.10` | Fabric entrypoint for MC 1.21.10 |
 | `fabric-1.21.9` | Fabric entrypoint for MC 1.21.9 |
@@ -80,6 +89,9 @@ A Minecraft mod that adds three temple structures with collectible orbs. Gatheri
 | `fabric-1.21.1` | Fabric entrypoint for MC 1.21.1 |
 | `fabric-1.20.1` | Fabric entrypoint for MC 1.20.1 |
 | `neoforge-base` | NeoForge-specific base code |
+| `neoforge-26.3` | NeoForge entrypoint for MC 26.3 |
+| `neoforge-26.2` | NeoForge entrypoint for MC 26.2 |
+| `neoforge-26.1.2` | NeoForge entrypoint for MC 26.1.2 |
 | `neoforge-1.21.11` | NeoForge entrypoint for MC 1.21.11 |
 | `neoforge-1.21.10` | NeoForge entrypoint for MC 1.21.10 |
 | `neoforge-1.21.9` | NeoForge entrypoint for MC 1.21.9 |

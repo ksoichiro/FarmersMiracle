@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    { "id": "farmersdelight:cabbages", "required": false },
+    { "id": "farmersdelight:onions", "required": false },
+    { "id": "farmersdelight:budding_tomatoes", "required": false },
+    { "id": "farmersdelight:tomatoes", "required": false },
+    { "id": "farmersdelight:rice", "required": false }
+  ]
+}

@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Minecraft 26.3 support (Fabric + NeoForge)
+- Minecraft 26.2 support (Fabric + NeoForge)
+- Minecraft 26.1.2 support (Fabric + NeoForge)
+
 ### Fixed
 
 - Periodically reapply missing buff effects so the HUD icons no longer disappear while the buff is still active

@@ -1,0 +1,49 @@
+architectury {
+    common rootProject.ext.enabled_platforms.split(',')
+}
+
+loom {
+    accessWidenerPath = file("src/main/resources/farmersmiracle.accesswidener")
+}
+
+sourceSets {
+    main {
+        java {
+            srcDir 'src/main/java'
+            srcDir '../shared/src/main/java'
+        }
+        // Exclude files from shared that have version-specific overrides in src/main/java
+        java.filter.exclude { element ->
+            if (!element.file.absolutePath.contains('/shared/')) {
+                return false
+            }
+            def excludedFiles = [
+                'ModItems.java'
+            ]
+            return excludedFiles.contains(element.file.name)
+        }
+    }
+}
+
+dependencies {
+    // We depend on Fabric Loader here to use the Fabric @Environment annotations,
+    // which get transformed to the correct annotations on each platform.
+    // Do NOT use other classes from Fabric Loader.
+    // MC 26.1+ is unobfuscated, so plain 'implementation' replaces 'modImplementation'.
+    implementation "net.fabricmc:fabric-loader:$rootProject.fabric_loader_version"
+}
+
+// Expand pack_format variable in pack.mcmeta
+// MC 26.1+ uses a [major, minor] pack format for both min_format and max_format
+processResources {
+    inputs.property 'pack_format', project.ext.pack_format
+
+    filesMatching('pack.mcmeta') {
+        expand 'pack_format': project.ext.pack_format
+    }
+}
+
+// Set duplicates strategy for sourcesJar to avoid conflicts
+tasks.named('sourcesJar') {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}

@@ -1,0 +1,29 @@
+license="LGPL-3.0"
+showAsResourcePack=false
+
+[[mods]]
+modId="farmersmiracle"
+version="${version}"
+displayName="Farmer's Miracle"
+description='''
+Collect three sacred orbs from small shrines to slightly boost crop growth around you.
+'''
+authors="ksoichiro"
+displayURL="https://github.com/ksoichiro/FarmersMiracle"
+
+[[mixins]]
+config="farmersmiracle.mixins.json"
+
+[[dependencies.farmersmiracle]]
+modId="neoforge"
+type="required"
+versionRange="[26.3.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.farmersmiracle]]
+modId="minecraft"
+type="required"
+versionRange="[26.3]"
+ordering="NONE"
+side="BOTH"
