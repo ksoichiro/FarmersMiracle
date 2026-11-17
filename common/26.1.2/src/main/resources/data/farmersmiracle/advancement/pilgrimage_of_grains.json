@@ -1,0 +1,61 @@
+{
+  "parent": "farmersmiracle:root",
+  "criteria": {
+    "has_wheat_orb": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "farmersmiracle:wheat_orb"
+            ]
+          }
+        ]
+      }
+    },
+    "has_pumpkin_orb": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "farmersmiracle:pumpkin_orb"
+            ]
+          }
+        ]
+      }
+    },
+    "has_melon_orb": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "farmersmiracle:melon_orb"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    ["has_wheat_orb"],
+    ["has_pumpkin_orb"],
+    ["has_melon_orb"]
+  ],
+  "display": {
+    "icon": {
+      "id": "farmersmiracle:pilgrimage_icon"
+    },
+    "title": {
+      "translate": "advancements.farmersmiracle.pilgrimage_of_grains.title"
+    },
+    "description": {
+      "translate": "advancements.farmersmiracle.pilgrimage_of_grains.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  }
+}

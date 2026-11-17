@@ -4,7 +4,8 @@
 
 - Mod ID: `farmersmiracle`
 - Package: `com.farmersmiracle`
-- Minecraft mod using Architectury Loom/Plugin (build-time only) targeting MC 1.20.1 (Fabric + Forge), MC 1.21.1 (Fabric + NeoForge), MC 1.21.3 (Fabric + NeoForge), MC 1.21.4 (Fabric + NeoForge), MC 1.21.5 (Fabric + NeoForge), MC 1.21.6 (Fabric + NeoForge), MC 1.21.7 (Fabric + NeoForge), MC 1.21.8 (Fabric + NeoForge), MC 1.21.9 (Fabric + NeoForge), MC 1.21.10 (Fabric + NeoForge), and MC 1.21.11 (Fabric + NeoForge)
+- Minecraft mod using Architectury Loom/Plugin (build-time only) targeting MC 1.20.1 (Fabric + Forge), MC 1.21.1 (Fabric + NeoForge), MC 1.21.3 (Fabric + NeoForge), MC 1.21.4 (Fabric + NeoForge), MC 1.21.5 (Fabric + NeoForge), MC 1.21.6 (Fabric + NeoForge), MC 1.21.7 (Fabric + NeoForge), MC 1.21.8 (Fabric + NeoForge), MC 1.21.9 (Fabric + NeoForge), MC 1.21.10 (Fabric + NeoForge), MC 1.21.11 (Fabric + NeoForge), MC 26.1.2 (Fabric + NeoForge), MC 26.2 (Fabric + NeoForge), and MC 26.3 (Fabric + NeoForge)
+- Gradle 9.5.1 with a Java 25 daemon JVM (`gradle/gradle-daemon-jvm.properties`). MC 1.x versions use Architectury Loom 1.13 (`dev.architectury.loom`); MC 26.x uses `dev.architectury.loom-no-remap` 1.17 (see MC 26.x Notes)
 - No Architectury API runtime dependency; platform-native APIs used for registry, events, and creative tabs
 - Gradle multi-project setup
 
@@ -24,6 +25,9 @@
 | `common/1.21.9` | Version-specific code (events, data, mixins) and resources for MC 1.21.9. `pack.mcmeta` uses `min_format`/`max_format` instead of `pack_format` |
 | `common/1.21.10` | Version-specific code (events, data, mixins) and resources for MC 1.21.10. No API changes from 1.21.9 |
 | `common/1.21.11` | Version-specific code (events, data, mixins) and resources for MC 1.21.11. `ResourceLocation` renamed to `Identifier` |
+| `common/26.1.2` | Version-specific code (events, data, mixins) and resources for MC 26.1.2. Unobfuscated MC, built with the Loom no-remap plugin |
+| `common/26.2` | Version-specific code (events, data, mixins) and resources for MC 26.2. No API changes from 26.1.2 |
+| `common/26.3` | Version-specific code (events, data, mixins) and resources for MC 26.3. No API changes from 26.2 |
 | `fabric/base` | Fabric-specific code (currently empty) |
 | `fabric/1.20.1` | Fabric entrypoint for MC 1.20.1 |
 | `fabric/1.21.1` | Fabric entrypoint for MC 1.21.1 |
@@ -36,6 +40,9 @@
 | `fabric/1.21.9` | Fabric entrypoint for MC 1.21.9 |
 | `fabric/1.21.10` | Fabric entrypoint for MC 1.21.10 |
 | `fabric/1.21.11` | Fabric entrypoint for MC 1.21.11 |
+| `fabric/26.1.2` | Fabric entrypoint for MC 26.1.2 |
+| `fabric/26.2` | Fabric entrypoint for MC 26.2 |
+| `fabric/26.3` | Fabric entrypoint for MC 26.3 |
 | `forge/base` | Forge-specific code (currently empty) |
 | `forge/1.20.1` | Forge entrypoint for MC 1.20.1 |
 | `neoforge/base` | NeoForge-specific code (currently empty) |
@@ -49,6 +56,9 @@
 | `neoforge/1.21.9` | NeoForge entrypoint for MC 1.21.9 |
 | `neoforge/1.21.10` | NeoForge entrypoint for MC 1.21.10 |
 | `neoforge/1.21.11` | NeoForge entrypoint for MC 1.21.11 |
+| `neoforge/26.1.2` | NeoForge entrypoint for MC 26.1.2 |
+| `neoforge/26.2` | NeoForge entrypoint for MC 26.2 |
+| `neoforge/26.3` | NeoForge entrypoint for MC 26.3 |
 
 ## Key Implementation Details
 
@@ -131,6 +141,18 @@
 - Java code otherwise identical to 1.21.10 (`setId()`, `lookupOrThrow()`, `items/` definitions, `SavedDataType` with Codec, `((ServerLevel) player.level()).getServer()` unchanged)
 - Mixin `refmap` platform split and `loom.platform=neoforge` settings carry over from 1.21.3/1.21.4/1.21.5/1.21.6/1.21.7/1.21.8/1.21.9/1.21.10
 
+## MC 26.x Notes (26.1.2, 26.2, 26.3)
+
+- **Unobfuscated Minecraft**: no Mojang mappings are published. `props/26.*.properties` set `loom_plugin=dev.architectury.loom-no-remap`, `loom_version`, `architectury_plugin_version` and `shadow_version`. `settings.gradle` (`pluginManagement.resolutionStrategy`) and the root `build.gradle` (`buildscript` classpath) read these per target version. Older versions fall back to Loom 1.13 / architectury-plugin 3.4 / Shadow 8.3
+- **Build files**: no `mappings`, plain `implementation`/`api` instead of `modImplementation`/`modApi`, `common(project(path: commonModule))` instead of `namedElements`. There is no `remapJar`: platform `shadowJar` repackages the `jar` output (classifier `raw`) and produces the final artifact
+- **Access widener**: header must be `accessWidener v2 official` (Loom rejects `named` for unobfuscated versions)
+- **Mixin JSON**: no `refmap` entry and no `loom.mixin.defaultRefmapName` in `common/26.x/build.gradle`
+- **pack.mcmeta**: `pack_format` is a `[major, minor]` value used for both `min_format` and `max_format`
+- **neoforge.mods.toml**: `modLoader`/`loaderVersion` are no longer declared
+- **SavedData**: `SavedDataType` takes an `Identifier` and the file moves to `data/<namespace>/<path>.dat` (`data/farmersmiracle/player_buffs.dat`). `DimensionDataStorage` was renamed to `SavedDataStorage`. `PlayerBuffData.get()` copies the legacy flat file (`data/farmersmiracle_player_buffs.dat`, MC 1.21.11 and earlier) once per storage instance so upgraded worlds keep their buffs
+- **Fabric API**: `FabricItemGroup` → `FabricCreativeModeTab` (`net.fabricmc.fabric.api.creativetab.v1`), `ParticleFactoryRegistry` → `ParticleProviderRegistry`
+- Data JSON (advancements, loot tables, worldgen) is unchanged from 1.21.11 and loads on 26.3 without errors (checked with a dedicated server, `/locate structure` and `/loot spawn`)
+
 ## Architectury (Build-Time Only)
 
 Architectury Loom and Plugin are used for build-time cross-platform support (remapping, multi-loader builds). Architectury API is NOT a runtime dependency. All registry, events, and creative tabs use platform-native APIs:
@@ -143,7 +165,7 @@ Architectury Loom and Plugin are used for build-time cross-platform support (rem
 ## Build & Test
 
 ```sh
-# Build for default version (1.21.11)
+# Build for default version (26.3)
 ./gradlew build
 
 # Build for a specific version
@@ -158,6 +180,9 @@ Architectury Loom and Plugin are used for build-time cross-platform support (rem
 ./gradlew build -Ptarget_mc_version=1.21.9
 ./gradlew build -Ptarget_mc_version=1.21.10
 ./gradlew build -Ptarget_mc_version=1.21.11
+./gradlew build -Ptarget_mc_version=26.1.2
+./gradlew build -Ptarget_mc_version=26.2
+./gradlew build -Ptarget_mc_version=26.3
 ```
 
 - MC 1.20.1 build requires Python 3 with `nbtlib` package (for NBT structure conversion)

@@ -1,0 +1,18 @@
+{
+  "itemGroup.farmersmiracle.farmersmiracle": "Farmer's Miracle",
+  "item.farmersmiracle.wheat_orb": "Wheat Orb",
+  "item.farmersmiracle.pumpkin_orb": "Pumpkin Orb",
+  "item.farmersmiracle.melon_orb": "Melon Orb",
+  "advancements.farmersmiracle.root.title": "Farmer's Miracle",
+  "advancements.farmersmiracle.root.description": "Collect sacred orbs from small shrines",
+  "advancements.farmersmiracle.the_first_harvest.title": "The First Harvest",
+  "advancements.farmersmiracle.the_first_harvest.description": "Obtain the Wheat Orb from the Temple of Golden Wheat",
+  "advancements.farmersmiracle.fruit_of_the_earth.title": "Fruit of the Earth",
+  "advancements.farmersmiracle.fruit_of_the_earth.description": "Obtain the Pumpkin Orb from the Temple of Pumpkins",
+  "advancements.farmersmiracle.a_juicy_reward.title": "A Juicy Reward",
+  "advancements.farmersmiracle.a_juicy_reward.description": "Obtain the Melon Orb from the Temple of Melons",
+  "advancements.farmersmiracle.pilgrimage_of_grains.title": "Pilgrimage of the Three Grain Temples",
+  "advancements.farmersmiracle.pilgrimage_of_grains.description": "Collect all three sacred orbs",
+  "effect.farmersmiracle.grain_growth": "Blessing of Grains: Growth",
+  "effect.farmersmiracle.grain_spread": "Blessing of Grains: Spread"
+}
