@@ -29,6 +29,7 @@ Check for breaking changes between the base version and the target version:
 Past examples of version-specific changes:
 - 1.21.2+: `registryOrThrow()` → `lookupOrThrow()`, `Item.Properties` requires `.setId(ResourceKey)`
 - 1.21.4: `assets/<namespace>/items/<id>.json` item model definitions required
+- 26.x: unobfuscated MC, built with `dev.architectury.loom-no-remap` (see "MC 26.x Notes" in `CLAUDE.md`). Copy new 26.x versions from the latest 26.x module, not from 1.21.x
 
 ## File Creation Checklist
 
@@ -36,25 +37,25 @@ Past examples of version-specific changes:
 
 Create from base version, update all version fields.
 
-### 2. `common-<version>/` module
+### 2. `common/<version>/` module
 
 Copy from base version's common module:
 
 ```
-cp -R common-<base> common-<version>
+rsync -a --exclude build --exclude .gradle --exclude run common/<base>/ common/<version>/
 ```
 
-- Remove `.DS_Store` files: `find common-<version> -name '.DS_Store' -delete`
+- Remove `.DS_Store` files: `find common/<version> -name '.DS_Store' -delete`
 - Apply any version-specific Java code changes
 - Apply any version-specific resource changes (new resource types, format changes)
 - `build.gradle`: Usually no changes needed (references are self-contained)
 
-### 3. `fabric-<version>/` module
+### 3. `fabric/<version>/` module
 
 Copy from base version:
 
 ```
-cp -R fabric-<base> fabric-<version>
+rsync -a --exclude build --exclude .gradle --exclude run fabric/<base>/ fabric/<version>/
 ```
 
 Update these files:
@@ -62,12 +63,12 @@ Update these files:
 - **`src/main/resources/fabric.mod.json`**: Update `depends` section:
   - `minecraft`: `~<new_mc_version>`
 
-### 4. `neoforge-<version>/` module (or `forge-<version>/` for 1.20.x)
+### 4. `neoforge/<version>/` module (or `forge/<version>/` for 1.20.x)
 
 Copy from base version:
 
 ```
-cp -R neoforge-<base> neoforge-<version>
+rsync -a --exclude build --exclude .gradle --exclude run neoforge/<base>/ neoforge/<version>/
 ```
 
 Update these files:
@@ -79,9 +80,11 @@ Update these files:
 
 ## Configuration & Documentation Update Checklist
 
-### 5. `gradle.properties` (root)
+### 5. `gradle.properties` (root) and `gradle/multi-version-tasks.gradle`
 
 - Update `target_mc_version` to the new version
+- Add the new version to `supportedVersions` in `gradle/multi-version-tasks.gradle` (used by `buildAll`, `cleanAll`, `collectJars`)
+- Add an entry to `CHANGELOG.md` under `Unreleased`
 
 ### 6. Documentation (all 4 files below)
 
@@ -102,6 +105,16 @@ Check for:
 - Build success
 - Deprecation warnings (note in CLAUDE.md if significant)
 - No errors in mixin application
+
+## Server Smoke Test
+
+Compiling does not validate data JSON (advancements, loot tables, worldgen). Start a dev server with RCON enabled (`fabric/<version>/run/server.properties`: `enable-rcon=true`, `rcon.port`, `rcon.password`, plus `eula.txt`), run `./gradlew :fabric:runServer -Ptarget_mc_version=<version> --args=nogui` (and `:neoforge:runServer`), then check:
+
+- No `ERROR`/`Couldn't parse` lines for `farmersmiracle` during startup
+- `locate structure farmersmiracle:temple_of_golden_wheat` (and `temple_of_pumpkin`, `temple_of_melons`) finds a structure
+- `loot spawn 0 200 0 loot farmersmiracle:chests/temple_of_golden_wheat` drops the orb
+
+The dev server JVM may not exit after `stop`. Kill it once the world is saved.
 
 ## Notes
 
